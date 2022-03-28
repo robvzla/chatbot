@@ -156,6 +156,12 @@ public class ChatBot
 		br.close();
 		return false;
 	}
+	
+	public HashMap<String, String> extractInformation(String botResponse, String userInput2) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public static void main(String[] args) {
 		// This is just for testing so the class can run. 
