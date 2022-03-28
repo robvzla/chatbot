@@ -171,5 +171,15 @@ public class ChatBotTest
 		String  expected = "22/04/2022";
 		assertEquals(expected, value);
 	}
+	
+	@Test
+	public void testWildCharactersValidation()
+	{
+		ChatBot bot = new ChatBot();
+		String botResponse = "slash";
+		botResponse = bot.wildCharactersValidation(botResponse);
+		String  expected = "/";
+		assertEquals(expected, botResponse);
+	}
 
 }
