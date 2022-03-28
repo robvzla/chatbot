@@ -2,10 +2,13 @@ package com.chatbot2.chatBot2;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 
 import org.junit.Test;
+
+import com.chatbot.chatBot.chatBotAPI;
 
 
 public class ChatBotTest 
@@ -52,6 +55,14 @@ public class ChatBotTest
 		Boolean actual = botResponse.isEmpty();
 		Boolean expected = false;
 		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testGetResourcePath() throws IOException 
+	{
+		ChatBot bot = new ChatBot();
+		File file = new File(bot.getResourcesPath());
+		assertTrue(file.exists());
 	}
 
 
