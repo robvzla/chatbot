@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.chatbot1.chatBot1.chatBot;
+
 public class ChatBotTest 
 {
 	// Test greeting method
@@ -23,6 +25,14 @@ public class ChatBotTest
 		ChatBot bot = new ChatBot();
 		boolean b = bot.greeting(); // type yes or y for the boolean to be true
 		assertTrue(b);
+	}
+
+	// Test to check that no is accepted, boolean should return false
+	@Test
+	public void greetingMethodTestForNoOrN() {
+		ChatBot bot = new ChatBot();
+		boolean b = bot.greeting(); // type anything but yes or y for a false or for immediate false type no or n
+		assertFalse(b);
 	}
 
 
