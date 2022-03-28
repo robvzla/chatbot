@@ -151,5 +151,25 @@ public class ChatBotTest
 		int expected = 0;
 		assertEquals(expected, actual);
 	}
+	
+	/*
+	 * 	Test case checks that the data (location and date) stored in the hashmap are
+	 * 	stored as a key > value pair
+	 */
+	@Test
+	public void testExtractInformation3()
+	{
+		ChatBot bot = new ChatBot();
+		HashMap<String, String> test = new HashMap<>();
+		String userInput = "Rome";
+		String botResponse = "Noted, what date will you visit?";
+		String userInput2 = "22/04/2022";
+		String botResponse2 = "Noted, is there any other place?";
+		test = bot.extractInformation(botResponse, userInput);
+		test = bot.extractInformation(botResponse2, userInput2);
+		String value = bot.getHolidays().get("Rome");
+		String  expected = "22/04/2022";
+		assertEquals(expected, value);
+	}
 
 }
