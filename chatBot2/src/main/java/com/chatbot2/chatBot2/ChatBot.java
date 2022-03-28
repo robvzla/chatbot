@@ -80,7 +80,8 @@ public class ChatBot
 		}
 	}
 
-	public String AskBot() 
+	//	Bot takes user input and goes through it AIML document to find an answer, then send back a response
+	public String AskBot() throws IOException 
 	{
 		String botAnswer ="";
 		System.out.print("Human : ");
@@ -116,11 +117,32 @@ public class ChatBot
 			//	This connects to the AIML doc and sends back a response based on what user asks 
 			String response = chatSession.multisentenceRespond(request);
 
+			//	Removes any wild characters in the bot's response and replace it with a more human readable word or symbol. E.g. "&gt;", "&lt;", "slash"
+			response = wildCharactersValidation(response);
+			/*	Stores location and date from user. This will later be used by the Weather Class to request weather information
+			 * 	from the extracted location and date
+			 */
+			extractInformation(response, request);
+
 			botAnswer = response;
 			System.out.println("Robot : " + response);
+
+			/*	Final transition in the AIML file.
+			 * 	The string inside contains activates the final template in the AIML file, this
+			 * 	displays location and dates collected from the interaction between bot and user.
+			 */
+			if (response.contains("Just to confirm, you will visit")) 
+			{
+				for (String i : getHolidays().keySet()) 
+				{
+					System.out.println("Robot : " + i + " on " + getHolidays().get(i));
+				}
+				System.out.println("Robot : " + "Right ?");
+			}
 		}
 		return botAnswer;
 	}
+
 	
 	public String getResourcesPath() 
 	{
@@ -215,7 +237,7 @@ public class ChatBot
 	}
 
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		// This is just for testing so the class can run. 
 		ChatBot bot = new ChatBot();
 		
