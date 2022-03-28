@@ -108,5 +108,27 @@ public class ChatBotTest
 		Boolean expected = false;
 		assertEquals(expected, actual);
 	}
+	
+	/*	The hashmap starts collecting information only in a given pattern
+	 * 	In this case, holiday topic is the context. The questions in the AIML file
+	 * 	conducts the user to input location and date in an order, the string pattern
+	 * 	that activates the hashmap to store information is when the user responds
+	 * 	to the specific question the bot is asking her/him. 
+	 */
+	@Test
+	public void testExtractInformation1()
+	{
+		ChatBot bot = new ChatBot();
+		HashMap<String, String> test = new HashMap<>();
+		String userInput = "Rome";
+		String botResponse = "Noted, what date will you visit?";
+		String userInput2 = "22/04/2022";
+		String botResponse2 = "Noted, is there any other place?";
+		test = bot.extractInformation(botResponse, userInput);
+		test = bot.extractInformation(botResponse2, userInput2);
+		int actual = test.size();
+		int expected = 1;
+		assertEquals(expected, actual);
+	}
 
 }
