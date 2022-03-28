@@ -189,9 +189,29 @@ public class ChatBot
 		return holidays;
 	}
 	
-	public String wildCharactersValidation(String botResponse) {
-		// TODO Auto-generated method stub
-		return null;
+	public String wildCharactersValidation(String response)
+	{
+		/*	Loops checks if response contains any wild characters that is not readable for the user
+		 * 	The AIML file response template is full of wild characters, before displaying bot's response
+		 * 	to the user we first check for those characters and replace it with appropriate meaning
+		 */	
+		while (response.contains("&lt;"))
+		{
+			response = response.replace("&lt;", "<");
+		}
+		while (response.contains("&gt;"))
+		{
+			response = response.replace("&gt;", ">");
+		}
+		while (response.contains("slash"))
+		{
+			response = response.replace("slash", "/");
+		}
+		while (response.contains("dash"))
+		{
+			response = response.replace("dash", "-");
+		}
+		return response;
 	}
 
 
