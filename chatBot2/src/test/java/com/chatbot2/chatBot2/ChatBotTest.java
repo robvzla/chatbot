@@ -63,6 +63,4 @@ public class ChatBotTest
 		assertTrue(file.exists());
 	}
 
-
-
 }

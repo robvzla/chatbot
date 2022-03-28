@@ -7,6 +7,7 @@ import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
 import org.alicebot.ab.History;
 import org.alicebot.ab.MagicBooleans;
+import org.alicebot.ab.MagicStrings;
 import org.alicebot.ab.utils.IOUtils;
 
 public class ChatBot 
@@ -80,22 +81,41 @@ public class ChatBot
 	{
 		String botAnswer ="";
 		System.out.print("Human : ");
+
 		userInput = IOUtils.readInputTextLine();
-		
-		String request = userInput;
-		//	Prints what is being talked between user and the Bot
-		if (MagicBooleans.trace_mode)
+
+		//	Checks if input is empty or null. If it is, then do not let the Bot send a response
+		if ((userInput == null) || (userInput.length() < 1))
 		{
-			System.out.println(
-					"STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
-					+ ":TOPIC=" + chatSession.predicates.get("topic"));
+			userInput = MagicStrings.null_input;
 		}
-		//	This connects to the AIML doc and sends back a response based on what user asks 
-		String response = chatSession.multisentenceRespond(request);
 
-		botAnswer = response;
-		System.out.println("Robot : " + response);
+		//	Condition to exit the loop/chat session based on user's input
+		if (userInput.equals("q")) 
+		{
+			System.exit(0);
+		} 
+		else if (userInput.equals("wq")) 
+		{
+			bot.writeQuit();
+			System.exit(0);
+		} 
+		else 
+		{
+			String request = userInput;
+			//	Prints what is being talked between user and the Bot
+			if (MagicBooleans.trace_mode)
+			{
+				System.out.println(
+						"STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
+						+ ":TOPIC=" + chatSession.predicates.get("topic"));
+			}
+			//	This connects to the AIML doc and sends back a response based on what user asks 
+			String response = chatSession.multisentenceRespond(request);
 
+			botAnswer = response;
+			System.out.println("Robot : " + response);
+		}
 		return botAnswer;
 	}
 	
