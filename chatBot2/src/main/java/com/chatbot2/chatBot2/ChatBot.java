@@ -1,6 +1,9 @@
 package com.chatbot2.chatBot2;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.alicebot.ab.Bot;
@@ -131,10 +134,27 @@ public class ChatBot
 		return resourcesPath;
 	}
 	
-	public Boolean cityValidation(String userInput2) 
+	public Boolean cityValidation(String userInput2) throws IOException 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		File citiesText = new File(".");
+		String path = citiesText.getAbsolutePath();
+		path = path.substring(0, path.length() - 2);
+		//	Location to where the city list text is saved in the Java Project
+		String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "bots" + File.separator + "super" + File.separator + "config" + File.separator + "citylist.txt";
+		File readCityList = new File(resourcesPath);
+		//	Buffer will read every single city in the text file
+		BufferedReader br = new BufferedReader(new FileReader(readCityList));
+		String str;
+		//	Loops through the whole city list text to find a match, if return false it means user input is not a valid city
+		while ((str = br.readLine()) != null) 
+		{
+			if (str.equalsIgnoreCase(userInput)) 
+			{
+				return true;
+			}
+		}
+		br.close();
+		return false;
 	}
 
 	public static void main(String[] args) {
