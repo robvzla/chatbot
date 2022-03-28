@@ -83,5 +83,18 @@ public class ChatBotTest
 		Boolean expected = true;
 		assertEquals(expected, actual);
 	}
+	
+	/*	If a input city contains a number, then is not valid 
+	 * 	and it will return false
+	 */
+	@Test
+	public void testCityValidation2() throws IOException 
+	{
+		ChatBot bot = new ChatBot();
+		String userInput = "London123";
+		Boolean actual = bot.cityValidation(userInput);
+		Boolean expected = false;
+		assertEquals(expected, actual);
+	}
 
 }
