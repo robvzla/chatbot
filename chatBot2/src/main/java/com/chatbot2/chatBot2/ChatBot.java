@@ -188,6 +188,11 @@ public class ChatBot
 		}
 		return holidays;
 	}
+	
+	public String wildCharactersValidation(String botResponse) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 	public static void main(String[] args) {
@@ -199,4 +204,5 @@ public class ChatBot
 			bot.AskBot();
 		}
 	}
+
 }
