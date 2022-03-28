@@ -39,7 +39,7 @@ public class ChatBotTest
 	@Test
 	public void hashMapTest() {
 		ChatBot bot = new ChatBot();
-		assertTrue(bot.getPlaces() instanceof HashMap);
+		assertTrue(bot.getHolidays() instanceof HashMap);
 	}
 
 
