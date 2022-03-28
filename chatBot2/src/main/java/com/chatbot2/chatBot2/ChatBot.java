@@ -164,6 +164,21 @@ public class ChatBot
 		if (response.contains("Noted, what date will you visit?")) 
 		{
 			location = request;
+			/*
+			 * 	Disabling the validation of user input for Milestone 1
+			 * 	Team is still deciding were to handle wrong/invalid data
+			 */
+//			if (cityValidation(request)) 
+//			{
+//				location = request;
+//			}
+//			else 
+//			{
+//				request = "FALSE";
+//				//	Update conversation
+//				response = chatSession.multisentenceRespond(request);
+//			}
+
 		}
 		//	Extracting user's date
 		if (response.contains("Noted, is there any other place?")) 
