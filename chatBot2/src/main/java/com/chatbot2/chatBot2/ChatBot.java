@@ -157,11 +157,23 @@ public class ChatBot
 		return false;
 	}
 	
-	public HashMap<String, String> extractInformation(String botResponse, String userInput2) 
+	//	Method gets the input holidays (location & date) from user and store it in a hashmap
+	public HashMap<String, String> extractInformation(String response, String request) 
 	{
-		// TODO Auto-generated method stub
-		return null;
+		//	Extracting user's location
+		if (response.contains("Noted, what date will you visit?")) 
+		{
+			location = request;
+		}
+		//	Extracting user's date
+		if (response.contains("Noted, is there any other place?")) 
+		{
+			date = request;
+			holidays.put(location, date);
+		}
+		return holidays;
 	}
+
 
 	public static void main(String[] args) {
 		// This is just for testing so the class can run. 
