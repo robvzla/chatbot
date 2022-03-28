@@ -49,12 +49,14 @@ public class ChatBot
 		}
 	}
 
+	public String AskBot() 
+	{
+		return null;
+	}
 
 	public static void main(String[] args) {
 		// This is just for testing so the class can run. 
 		System.out.println("Hello");
 	}
-
-
 
 }
