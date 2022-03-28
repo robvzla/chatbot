@@ -49,8 +49,13 @@ public class ChatBot
 		}
 	}
 
-	public String AskBot() 
-	{
+	public String AskBot() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public String getResourcesPath() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -58,5 +63,4 @@ public class ChatBot
 		// This is just for testing so the class can run. 
 		System.out.println("Hello");
 	}
-
 }
