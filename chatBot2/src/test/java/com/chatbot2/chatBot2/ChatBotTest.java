@@ -45,6 +45,9 @@ public class ChatBotTest
 		assertTrue(bot.getHolidays() instanceof HashMap);
 	}
 
+	/*	
+	 * 	Test Case: Checks if bot gives an answer after typing something
+	 */
 	@Test
 	public void testAskBot() throws IOException 
 	{
@@ -55,12 +58,30 @@ public class ChatBotTest
 		assertEquals(expected, actual);
 	}
 	
+	/*	
+	 * 	Test Case: Checks if path to the bot's resource folder exists
+	 */
 	@Test
 	public void testGetResourcePath() throws IOException 
 	{
 		ChatBot bot = new ChatBot();
 		File file = new File(bot.getResourcesPath());
 		assertTrue(file.exists());
+	}
+	
+	/* Test Case: Checks whether user inputs a valid city or not
+	 * It uses a list of city (text) we created to check if the location is valid or not
+	 * if it fails it either means the location is not valid (e.g. Dublinnn23) or the city 
+	 * does not exist in the text file
+	 */
+	@Test
+	public void testCityValidation1() throws IOException 
+	{
+		ChatBot bot = new ChatBot();
+		String userInput = "Paris";
+		Boolean actual = bot.cityValidation(userInput);
+		Boolean expected = true;
+		assertEquals(expected, actual);
 	}
 
 }
