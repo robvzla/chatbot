@@ -134,7 +134,7 @@ public class ChatBot
 		return resourcesPath;
 	}
 	
-	public Boolean cityValidation(String userInput2) throws IOException 
+	public Boolean cityValidation(String userInput) throws IOException 
 	{
 		File citiesText = new File(".");
 		String path = citiesText.getAbsolutePath();
