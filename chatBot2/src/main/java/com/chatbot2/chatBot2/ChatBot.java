@@ -9,13 +9,23 @@ public class ChatBot
 	// Attributes
 	private static final String greeting = "Hi, I heard you're going on holiday? Do you want some help planning your wardrobe?";
 	String userInput;
-	
+	// HashMap holds the location and date (given by user) as a key > value pair so the Weather Class can request
+	// weather information to the API on the specified location and date.
+	// May consider changing the HashMap to a <String, ArrayList<String>> HashMap to make interaction easier with
+	// the weather API
+	private HashMap<String, String> holidays;
+
 	// Add getters for testing purposes
 	public String getGreeting() {
 		return this.greeting;
 	}
-	
-	
+
+	public HashMap<String, String> getHolidays(){
+		return this.holidays;
+	}
+
+
+
 	// Methods
 	// Greeting method - to give the user the option to use the chat bot or not
 	public boolean greeting(){
@@ -38,13 +48,13 @@ public class ChatBot
 			return false;
 		}
 	}
-	
-	
+
+
 	public static void main(String[] args) {
 		// This is just for testing so the class can run. 
 		System.out.println("Hello");
 	}
-	
+
 
 
 }
