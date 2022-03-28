@@ -1,5 +1,6 @@
 package com.chatbot2.chatBot2;
 
+import java.io.File;
 import java.util.HashMap;
 
 import org.alicebot.ab.utils.IOUtils;
@@ -54,9 +55,17 @@ public class ChatBot
 		return null;
 	}
 	
-	public String getResourcesPath() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getResourcesPath() 
+	{
+		File currentDirectory = new File(".");
+		//	Gets the full path of the current directory
+		String path = currentDirectory.getAbsolutePath();
+		path = path.substring(0, path.length() - 2);
+		System.out.println(path);
+		//	Location to where the Bot's resources are saved in the Java Project
+		String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
+		return resourcesPath;
+
 	}
 
 	public static void main(String[] args) {

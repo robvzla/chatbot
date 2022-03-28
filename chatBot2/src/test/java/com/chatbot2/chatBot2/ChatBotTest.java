@@ -8,8 +8,6 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import com.chatbot.chatBot.chatBotAPI;
-
 
 public class ChatBotTest 
 {
