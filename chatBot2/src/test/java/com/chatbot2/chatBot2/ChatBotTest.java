@@ -2,9 +2,11 @@ package com.chatbot2.chatBot2;
 
 import static org.junit.Assert.*;
 
+import java.io.IOException;
 import java.util.HashMap;
 
 import org.junit.Test;
+
 
 public class ChatBotTest 
 {
@@ -42,6 +44,15 @@ public class ChatBotTest
 		assertTrue(bot.getHolidays() instanceof HashMap);
 	}
 
+	@Test
+	public void testAskBot() throws IOException 
+	{
+		ChatBot bot = new ChatBot();
+		String botResponse = bot.AskBot();
+		Boolean actual = botResponse.isEmpty();
+		Boolean expected = false;
+		assertEquals(expected, actual);
+	}
 
 
 
