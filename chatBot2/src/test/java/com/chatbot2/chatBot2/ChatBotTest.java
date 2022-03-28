@@ -96,5 +96,17 @@ public class ChatBotTest
 		Boolean expected = false;
 		assertEquals(expected, actual);
 	}
+	
+	/*	If a input city does not exits, it returns false 
+	 */
+	@Test
+	public void testCityValidation3() throws IOException 
+	{
+		ChatBot bot = new ChatBot();
+		String userInput = "Gotham";
+		Boolean actual = bot.cityValidation(userInput);
+		Boolean expected = false;
+		assertEquals(expected, actual);
+	}
 
 }
