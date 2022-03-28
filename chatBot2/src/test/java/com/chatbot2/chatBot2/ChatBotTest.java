@@ -2,9 +2,9 @@ package com.chatbot2.chatBot2;
 
 import static org.junit.Assert.*;
 
-import org.junit.Test;
+import java.util.HashMap;
 
-import com.chatbot1.chatBot1.chatBot;
+import org.junit.Test;
 
 public class ChatBotTest 
 {
@@ -33,6 +33,13 @@ public class ChatBotTest
 		ChatBot bot = new ChatBot();
 		boolean b = bot.greeting(); // type anything but yes or y for a false or for immediate false type no or n
 		assertFalse(b);
+	}
+
+	// Test the HashMap
+	@Test
+	public void hashMapTest() {
+		ChatBot bot = new ChatBot();
+		assertTrue(bot.getPlaces() instanceof HashMap);
 	}
 
 
