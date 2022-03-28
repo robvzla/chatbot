@@ -130,6 +130,12 @@ public class ChatBot
 		String resourcesPath = path + File.separator + "src" + File.separator + "main" + File.separator + "resources";
 		return resourcesPath;
 	}
+	
+	public Boolean cityValidation(String userInput2) 
+	{
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public static void main(String[] args) {
 		// This is just for testing so the class can run. 
