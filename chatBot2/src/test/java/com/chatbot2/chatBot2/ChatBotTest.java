@@ -4,13 +4,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import com.chatbot1.chatBot1.chatBot;
+
 public class ChatBotTest 
 {
-	//	Initial test for ChatBot Class
+	// Test greeting method
 
+	// Test the greeting string. 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void greetingTest1() {
+		String s1 = "Hi, I heard you're going on holiday? Do you want some help planning your wardrobe?";
+		chatBot bot = new chatBot();
+		assertEquals(s1, bot.getGreeting());
 	}
+
+
+
 
 }
