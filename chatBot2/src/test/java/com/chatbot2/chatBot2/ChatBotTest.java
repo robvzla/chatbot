@@ -38,7 +38,7 @@ public class ChatBotTest
 		assertFalse(b);
 	}
 
-	// Test the HashMap
+	// Test the HashMap - RETURNING FALSE AND SHOULD NOT BE, CHANGE LATER
 	@Test
 	public void hashMapTest() {
 		ChatBot bot = new ChatBot();
