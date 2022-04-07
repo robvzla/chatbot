@@ -2,6 +2,7 @@ package com.chatbot2.chatBot2;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,7 @@ public class AIMLCreatorTest {
 	 But before the class was created this location file did not exist which makes this a valid test case
 	 */
 	@Test
-	public void test() {
+	public void testFileDoesNotExist() {
 		// Create the new bot
 		ChatBot bot = new ChatBot(); 
 		// File that I will use to create the AIML file will be part of the AIMLCreator constructor
@@ -31,6 +32,21 @@ public class AIMLCreatorTest {
 		assertTrue(isTrue); 
 	}
 	
+	/*
+	 Test Two: 
+	 Test to ensure that the filepath for the .txt file is correct
+	 */
+	
+	@Test
+	public void testFilePathForTXTIsCorrect() {
+		// Path for the file in question 'locations.txt'
+		// This is the code that will be generating the location in the class
+		String fileLocation = ChatBot.getResourcesPath() + File.separator + "bots" + File.separator + "super" + File.separator + "config" + File.separator + "citylist.txt";
+		// Ensure to escape the escapes so the string is read correctly
+		// This is the location when you're reading down the files
+		String actualLocation = ChatBot.getResourcesPath() + "\\bots\\super\\config\\citylist.txt";
+		assertEquals(fileLocation, actualLocation);
+	}
 	
 
 }
