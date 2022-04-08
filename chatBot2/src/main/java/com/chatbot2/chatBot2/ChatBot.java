@@ -178,7 +178,7 @@ public class ChatBot
 		return response;
 	}
 
-	
+
 	//	Bot takes user input and goes through it AIML document to find an answer, then send back a response
 	public String AskBot() throws IOException 
 	{
@@ -251,20 +251,5 @@ public class ChatBot
 		}
 		return botAnswer;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 }
