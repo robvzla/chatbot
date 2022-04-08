@@ -3,6 +3,7 @@ package com.chatbot2.chatBot2;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -58,6 +59,10 @@ public class AIMLCreator {
 	public String getPrintFileToPath() {
 		return this.printFileToPath; 
 	}
+	
+	public int getListSize() {
+		return list.size();
+	}
 
 	// Setters
 	// This setter will remove the .txt from the file given in the constructor
@@ -86,6 +91,44 @@ public class AIMLCreator {
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: " + e.getMessage());
 		}		
+	}
+	
+	public void writeFile() {
+		PrintWriter fileOut; 
+		setFileName();
+
+		try {
+			fileOut = new PrintWriter(printFileToPath + fileName + ".aiml"); 
+
+			// Print the top of the AIML File
+			fileOut.print("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n"
+					+ "<aiml>");
+
+			// Create a line break
+			fileOut.println();
+			// Create a loop to loop through the array to print all the patterns
+			for(int i = 0; i < list.size(); i++) {
+				fileOut.print("<category>");
+				fileOut.print("<pattern>" + list.get(i).toUpperCase() + "</pattern>");
+				fileOut.print("<template>");
+				fileOut.print("<random>");
+				fileOut.print("<li>That's a great place to go!</li>");
+				fileOut.print("<li>That sounds adventurous!</li>");
+				fileOut.print("<li>I hope you enjoy it!</li>");
+				fileOut.print("</random>"); 
+				fileOut.print("</template>"); 
+				fileOut.print("</category>"); 	
+			
+			}
+			// CLose the file after the loop
+			fileOut.print("</aiml>"); 
+			// Close the Print Writer Object
+			fileOut.close();
+
+		} catch (FileNotFoundException e) {
+			System.out.println("Error: " + e);
+		}
+
 	}
 
 }
