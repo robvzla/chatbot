@@ -46,7 +46,17 @@ public class AIMLCreator {
 		this.fileLocation = getFromFilePath + fileName;
 	}
 	
-	// Required setters and getters - will not do one of each for all attribute, only those required for the testing and the code
 	
+	
+	// Required setters and getters - will not do one of each for all attribute, only those required for the testing and the code
+	// Getters
+	
+	public String getFileName() {
+		return this.fileName; 
+	}
+	
+	public String getPrintFileToPath() {
+		return this.printFileToPath; 
+	}
 	
 }
