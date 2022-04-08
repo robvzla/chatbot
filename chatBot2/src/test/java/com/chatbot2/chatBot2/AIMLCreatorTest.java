@@ -50,7 +50,7 @@ public class AIMLCreatorTest {
 		assertEquals(fileLocation, actualLocation);
 	}
 
-	
+
 	/*
 	 Test Three: 
 	 Test to ensure that the setFileName() method will remove the .txt from the 
@@ -59,11 +59,28 @@ public class AIMLCreatorTest {
 
 	@Test
 	public void testSetFileName() {
-		AIMLCreator test = new AIMLCreator("locations.txt"); 
+		AIMLCreator test = new AIMLCreator("citylist.txt"); 
 		String expected = "locations"; 
 		test.setFileName();
 		String actual = test.getFileName();
 		assertEquals(expected, actual); 
 	}
+
+	/*
+	 Test Four: 
+	 Test to ensure that the file is created
+	 */
+
+	@Test
+	public void testFileIsCreated() {
+		AIMLCreator test = new AIMLCreator("citylist.txt"); 
+		test.writeFile(); 
+		Path path = Paths.get(test.getPrintFileToPath() + test.getFileName() + ".aiml"); 
+		boolean isTrue = Files.exists(path); 
+		assertTrue(isTrue); 
+
+	}
+
+
 
 }
