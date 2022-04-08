@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
+import com.chatbot1.chatBot1.AIMLCreator;
+
 public class AIMLCreatorTest {
 
 	/*
@@ -84,11 +86,22 @@ public class AIMLCreatorTest {
 
 	@Test
 	public void testFileInCorrectDirectory() {
-		// Path for the file in question 'locations.txt'
-		String fileLocation = ChatBot.getResourcesPath() + File.separator + "bots" + File.separator + "super" + File.separator + "aiml" + File.separator + "locations.aiml";
+		// Path for the file in question 'citylist.txt'
+		String fileLocation = ChatBot.getResourcesPath() + File.separator + "bots" + File.separator + "super" + File.separator + "aiml" + File.separator + "citylist.aiml";
 		// Ensure to escape the escapes so the string is read correctly
-		String actualLocation = ChatBot.getResourcesPath() + "\\bots\\super\\aiml\\locations.aiml";
+		String actualLocation = ChatBot.getResourcesPath() + "\\bots\\super\\aiml\\citylist.aiml";
 		assertEquals(fileLocation, actualLocation);
+	}
+	
+	/*
+	 Test Six: 
+	 Test to ensure that the AIMLCreator Constructor works correctly - as in creates an instance of AIMLCreator object
+	 */
+	
+	@Test
+	public void testConstructor() {
+		AIMLCreator test = new AIMLCreator("citylist.txt"); 
+		assertTrue(test instanceof AIMLCreator); 
 	}
 
 
