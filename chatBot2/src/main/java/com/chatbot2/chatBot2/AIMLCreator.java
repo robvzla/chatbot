@@ -12,6 +12,8 @@ public class AIMLCreator {
 	 This class will be primarily used to generate an AIML file of locations for the chatbot
 	*/
 	
+	
+	
 	// Attributes
 	
 	// This is where the file given to the constructor is found - the path will not change
@@ -34,5 +36,17 @@ public class AIMLCreator {
 	Scanner fileIn; 
 	
 	
-
+	
+	
+	// Constructor
+	
+	public AIMLCreator(String fileName) {
+		this.fileName = fileName;  
+		//System.out.println(fileName + ".txt");
+		this.fileLocation = getFromFilePath + fileName;
+	}
+	
+	// Required setters and getters - will not do one of each for all attribute, only those required for the testing and the code
+	
+	
 }
