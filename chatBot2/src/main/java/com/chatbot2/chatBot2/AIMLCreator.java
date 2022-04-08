@@ -1,10 +1,38 @@
 package com.chatbot2.chatBot2;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class AIMLCreator {
 	
-	// This class is going to use .txt files to generate AIML files 
-	// The .txt files will be stored in the config directory in the resources directory
-	// This class will be primarily used to generate an AIML file of locations for the chatbot
+	/*
+	 This class is going to use .txt files to generate AIML files 
+	 The .txt files will be stored in the config directory in the resources directory
+	 This class will be primarily used to generate an AIML file of locations for the chatbot
+	*/
+	
+	// Attributes
+	
+	// This is where the file given to the constructor is found - the path will not change
+	private final String getFromFilePath = ChatBot.getResourcesPath() + File.separator + "bots" 
+			+ File.separator + "super" + File.separator + "config" 
+			+ File.separator;
+	
+	// This is where the new aiml file will be written to - the path will not change
+	private final String printFileToPath = ChatBot.getResourcesPath() + File.separator + "bots" 
+			+ File.separator + "super" + File.separator + "aiml" 
+			+ File.separator;
+	
+	private String fileLocation; 
+	private String fileName; 
+	
+	// An arrayList to hold all the information that will be read from the file given in the constructor
+	private ArrayList<String> list = new ArrayList<String>();
+	
+	// A Scanner object to read the file
+	Scanner fileIn; 
+	
 	
 
 }
