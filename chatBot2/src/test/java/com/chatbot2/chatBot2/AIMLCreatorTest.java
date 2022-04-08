@@ -9,9 +9,6 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import com.chatbot1.chatBot1.AIMLCreator;
-
-
 public class AIMLCreatorTest {
 
 	/*
@@ -78,7 +75,20 @@ public class AIMLCreatorTest {
 		Path path = Paths.get(test.getPrintFileToPath() + test.getFileName() + ".aiml"); 
 		boolean isTrue = Files.exists(path); 
 		assertTrue(isTrue); 
+	}
 
+	/*
+	 Test Five: 
+	 Test to ensure that the file is created in the correct Directory - file path must be correct
+	 */
+
+	@Test
+	public void testFileInCorrectDirectory() {
+		// Path for the file in question 'locations.txt'
+		String fileLocation = ChatBot.getResourcesPath() + File.separator + "bots" + File.separator + "super" + File.separator + "aiml" + File.separator + "locations.aiml";
+		// Ensure to escape the escapes so the string is read correctly
+		String actualLocation = ChatBot.getResourcesPath() + "\\bots\\super\\aiml\\locations.aiml";
+		assertEquals(fileLocation, actualLocation);
 	}
 
 
