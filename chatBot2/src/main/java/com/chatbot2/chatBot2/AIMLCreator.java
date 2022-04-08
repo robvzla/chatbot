@@ -108,18 +108,43 @@ public class AIMLCreator {
 			fileOut.println();
 			// Create a loop to loop through the array to print all the patterns
 			for(int i = 0; i < list.size(); i++) {
+				System.out.println(i);
 				fileOut.print("<category>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("<pattern>" + list.get(i).toUpperCase() + "</pattern>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("<template>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("<random>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("<li>That's a great place to go!</li>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("<li>That sounds adventurous!</li>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("<li>I hope you enjoy it!</li>");
+				// Create a line break
+				fileOut.println();
 				fileOut.print("</random>"); 
+				// Create a line break
+				fileOut.println();
 				fileOut.print("</template>"); 
+				// Create a line break
+				fileOut.println();
 				fileOut.print("</category>"); 	
-			
+				// Create a line break
+				fileOut.println();
+				// Create a line break
+				fileOut.println();
 			}
+
+			// Create a line break
+			fileOut.println();
 			// CLose the file after the loop
 			fileOut.print("</aiml>"); 
 			// Close the Print Writer Object
@@ -128,6 +153,8 @@ public class AIMLCreator {
 		} catch (FileNotFoundException e) {
 			System.out.println("Error: " + e);
 		}
+
+
 
 	}
 
