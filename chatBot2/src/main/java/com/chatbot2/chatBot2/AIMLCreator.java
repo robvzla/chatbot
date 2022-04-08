@@ -50,13 +50,19 @@ public class AIMLCreator {
 	
 	// Required setters and getters - will not do one of each for all attribute, only those required for the testing and the code
 	// Getters
-	
 	public String getFileName() {
 		return this.fileName; 
 	}
 	
 	public String getPrintFileToPath() {
 		return this.printFileToPath; 
+	}
+	
+	// Setters
+	// This setter will remove the .txt from the file given in the constructor
+	public void setFileName() {
+		this.fileName = fileName.substring(0, fileName.length() - 4); 
+		System.out.println(fileName);
 	}
 	
 }
