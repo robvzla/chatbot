@@ -102,6 +102,21 @@ public class AIMLCreatorTest {
 		assertTrue(test instanceof AIMLCreator); 
 	}
 
+	/* 
+	 Test Seven: 
+	 Test the readFile method is working correctly. 
+	 Check the file that will be used in the constructor and ensure that the actual int in the test case is the amount of lines in that file
+	 as this will change when more locations are added to it. 
+	 When this test case was written there were 1894 locations in the file but this will change. 
+	 */
 
+	@Test
+	public void testReadFile() {
+		AIMLCreator test = new AIMLCreator("citylist.txt"); 
+		test.readFile();
+		int expected = 1894; 
+		int actual = test.getListSize();
+		assertEquals(expected, actual); 
+	}
 
 }
