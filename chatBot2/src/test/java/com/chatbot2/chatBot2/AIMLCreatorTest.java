@@ -9,6 +9,8 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
+import com.chatbot1.chatBot1.AIMLCreator;
+
 
 public class AIMLCreatorTest {
 
@@ -24,19 +26,19 @@ public class AIMLCreatorTest {
 		ChatBot bot = new ChatBot(); 
 		// File that I will use to create the AIML file will be part of the AIMLCreator constructor
 		AIMLCreator file = new AIMLCreator("locations.txt"); 
-		
+
 		// Path to where the file should be
 		file.setFileName();
 		Path path = Paths.get(file.getPrintFileToPath() + file.getFileName() + ".aiml"); 
 		boolean isTrue = Files.notExists(path); 
 		assertTrue(isTrue); 
 	}
-	
+
 	/*
 	 Test Two: 
 	 Test to ensure that the filepath for the .txt file is correct
 	 */
-	
+
 	@Test
 	public void testFilePathForTXTIsCorrect() {
 		// Path for the file in question 'locations.txt'
@@ -47,6 +49,21 @@ public class AIMLCreatorTest {
 		String actualLocation = ChatBot.getResourcesPath() + "\\bots\\super\\config\\citylist.txt";
 		assertEquals(fileLocation, actualLocation);
 	}
+
 	
+	/*
+	 Test Three: 
+	 Test to ensure that the setFileName() method will remove the .txt from the 
+	 file name so it will work correctly in the aiml directory
+	 */
+
+	@Test
+	public void testSetFileName() {
+		AIMLCreator test = new AIMLCreator("locations.txt"); 
+		String expected = "locations"; 
+		test.setFileName();
+		String actual = test.getFileName();
+		assertEquals(expected, actual); 
+	}
 
 }
