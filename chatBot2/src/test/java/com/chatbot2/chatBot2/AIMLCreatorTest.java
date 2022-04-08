@@ -9,8 +9,6 @@ import java.nio.file.Paths;
 
 import org.junit.Test;
 
-import com.chatbot1.chatBot1.AIMLCreator;
-
 public class AIMLCreatorTest {
 
 	/*
@@ -24,7 +22,7 @@ public class AIMLCreatorTest {
 		// Create the new bot
 		ChatBot bot = new ChatBot(); 
 		// File that I will use to create the AIML file will be part of the AIMLCreator constructor
-		AIMLCreator file = new AIMLCreator("locations.txt"); 
+		AIMLCreator file = new AIMLCreator("citylist.txt"); 
 
 		// Path to where the file should be
 		file.setFileName();
@@ -40,7 +38,7 @@ public class AIMLCreatorTest {
 
 	@Test
 	public void testFilePathForTXTIsCorrect() {
-		// Path for the file in question 'locations.txt'
+		// Path for the file in question 'citylist.txt'
 		// This is the code that will be generating the location in the class
 		String fileLocation = ChatBot.getResourcesPath() + File.separator + "bots" + File.separator + "super" + File.separator + "config" + File.separator + "citylist.txt";
 		// Ensure to escape the escapes so the string is read correctly
