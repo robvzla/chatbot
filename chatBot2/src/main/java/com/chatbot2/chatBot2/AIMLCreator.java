@@ -59,7 +59,7 @@ public class AIMLCreator {
 	public String getPrintFileToPath() {
 		return this.printFileToPath; 
 	}
-	
+
 	public int getListSize() {
 		return list.size();
 	}
@@ -92,7 +92,7 @@ public class AIMLCreator {
 			System.out.println("Error: " + e.getMessage());
 		}		
 	}
-	
+
 	public void writeFile() {
 		PrintWriter fileOut; 
 		setFileName();
@@ -121,13 +121,19 @@ public class AIMLCreator {
 				fileOut.print("<random>");
 				// Create a line break
 				fileOut.println();
-				fileOut.print("<li>That's a great place to go!</li>");
+				fileOut.print("<li>I've always loved it there! What date do you plan to go?</li>");
 				// Create a line break
 				fileOut.println();
-				fileOut.print("<li>That sounds adventurous!</li>");
+				fileOut.print("<li>Cool, what date will you go?</li>");
 				// Create a line break
 				fileOut.println();
-				fileOut.print("<li>I hope you enjoy it!</li>");
+				fileOut.print("<li>I hope you enjoy it! What date do you have in mind?</li>");
+				// Create a line break
+				fileOut.println();
+				fileOut.print("<li>Hopefully you enjoy the weather there! Any thoughts on a date?</li>");
+				// Create a line break
+				fileOut.println();
+				fileOut.print("<li>Fantastic choice, what date do you think you will go?</li>");
 				// Create a line break
 				fileOut.println();
 				fileOut.print("</random>"); 
@@ -157,5 +163,6 @@ public class AIMLCreator {
 
 
 	}
+
 
 }
