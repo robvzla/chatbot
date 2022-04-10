@@ -307,4 +307,22 @@ public class ChatBotTest
 		bot.addLocationToList("Dublin"); 
 		assertEquals(2, bot.findArrayLocation("Dublin")); 
 	}
+	
+	/*
+	 * addLocationToList()
+	 * This method adds a new nested ArrayList to the outer ArrayList if checkArrayLocation() returns false. 
+	 * If a new nested ArrayList is added, the method returns true, else returns false; 
+	 * It will also add the location passed as the first element of the new ArrayList.
+	 */
+	
+	
+	/*
+	 * Test Seven: 
+	 * Test by adding a new location (should return true). 
+	 */
+	@Test
+	public void testAddLocationToListReturnTrue() {
+		ChatBot bot = new ChatBot(); 
+		assertTrue(bot.addLocationToList("Caracas")); 
+	}
 }
