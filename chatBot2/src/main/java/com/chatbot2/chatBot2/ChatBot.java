@@ -203,6 +203,12 @@ public class ChatBot
 		}
 		return false; 
 	}
+
+	// Hard Code to ask the user for a date
+	public String whatDate() {
+		String userInput = IOUtils.readInputTextLine(); 
+		return userInput; 
+	}
 	/*
 	 * Change the AskBot() method.
 	 * This method will now return the userInput as a String which will be used in the runBot() method. 
