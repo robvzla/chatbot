@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.text.ParseException;
 import java.util.HashMap;
 
 import org.junit.Test;
@@ -530,6 +532,29 @@ public class ChatBotTest
 		int location = bot.findArrayLocation("Ahascragh"); 
 		String date = "20-05-2022"; 
 		assertTrue(bot.addDateToArrayList(location, date)); 	
+	}
+	
+	/*
+	 * exitLoop()
+	 * Exits the loop by returning true (No more holidays planned). 
+	 */
+
+	
+	/*
+	 * Test Twenty-Five: 
+	 * Test by answering 'yes'. Should return false; 
+	 */
+
+	@Test
+	public void testExitLoopFalse(){
+		ChatBot bot = new ChatBot();
+		boolean isFalse = false; 
+		try{
+			isFalse = bot.exitLoop(); // Type yes into console to test
+		} catch (MalformedURLException | ParseException e) {
+			fail(); 
+		}
+		assertFalse(isFalse); 	
 	}
 	
 }
