@@ -1,27 +1,27 @@
-package com.chatbot2.chatBot2;
-
 import java.io.IOException;
+import java.text.ParseException;
 
 public class Main {
-
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, ParseException {
 		
-		// Main class for the chatbot
-		
-		
-		// Create the new AIML file
-		AIMLCreator newFile = new AIMLCreator("citylist.txt"); 
-		newFile.readFile();
+		// Create the aiml file from the citylist.txt file
+		AIMLCreator newFile = new AIMLCreator("citylist.txt");
+		newFile.readFile(); 
 		newFile.writeFile();
 		
-		// Create the Chat Bot
+		// Create the bot
 		ChatBot bot = new ChatBot(); 
+		int i = 0; 
 		
 		// Run the greeting method
-		bot.greeting(); 
-		
-		// Then run the askBot Method - this is where all the user input will be taken and stored
-		bot.AskBot(); 
-		
+		if(bot.greeting()) {
+			do {
+				bot.runBot();
+			} while (!bot.runBot()); 
+		}
+//		System.out.println("Show the list of locations and dates: ");
+//		bot.displayList(); 
+		// Run the askBot method
 	}
+
 }
