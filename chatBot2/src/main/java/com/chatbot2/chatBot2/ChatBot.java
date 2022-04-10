@@ -235,6 +235,15 @@ public class ChatBot
 		date = date.replace('.', '-'); 
 		return date; 
 	}
+
+	// Add Date to ArrayList
+	public boolean addDateToArrayList(int location, String date) {
+		if (list.get(location).add(date)) {
+			return true;
+		} else {
+			return false; 
+		}
+	}
 	/*
 	 * Change the AskBot() method.
 	 * This method will now return the userInput as a String which will be used in the runBot() method. 
