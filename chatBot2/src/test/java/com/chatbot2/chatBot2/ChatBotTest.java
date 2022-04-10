@@ -261,6 +261,27 @@ public class ChatBotTest
 		bot.addLocationToList(location);
 		assertTrue(bot.checkArrayLocation(location)); 
 	}
+	
+	/*
+	 * findArrayLocation()
+	 * This method will return the index value of the string it is searching for. 
+	 * Test to get an index value for a location that you know the value of. 
+	 */
+
+	
+	/*
+	 * Test Four: 
+	 * Test to see if the method can find a location
+	 */
+	@Test
+	public void testFindArrayLocation1() {
+		ChatBot bot = new ChatBot(); 
+		bot.addLocationToList("Caracas"); 
+		bot.addLocationToList("Ahascragh"); 
+		bot.addLocationToList("Dublin"); 
+		assertEquals(0, bot.findArrayLocation("Caracas")); 
+	}
+	
 
 
 
