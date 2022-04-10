@@ -8,9 +8,6 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import com.chatbot1.chatBot1.FionaChatBot;
-
-
 public class ChatBotTest 
 {
 	// Test greeting method
@@ -231,5 +228,26 @@ public class ChatBotTest
 		assertEquals(actual, expected); 
 
 	}
+	
+	/*
+	 * checkArrayLocation()
+	 * This method loops through the 2d ArrayList to check if the location
+	 * has already been added to a nested ArrayList. 
+	 * If it has it will return true. 
+	 * If it hasn't it will return false. 
+	 */
+	
+
+	/*
+	 * Test Two: 
+	 * Test to see if it will return false if the location has not been added.
+	 */
+	@Test
+	public void testCheckArrayLocationReturnFalse() {
+		ChatBot bot = new ChatBot(); 
+		String location = "Ahascragh"; 
+		assertFalse(bot.checkArrayLocation(location)); 
+	}
+
 
 }
