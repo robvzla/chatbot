@@ -433,4 +433,21 @@ public class ChatBotTest
 		ChatBot bot = new ChatBot(); 
 		assertTrue(bot.dateValidation("16/06-2022")); 
 	}
+	
+	/*
+	 * returnValidDate()
+	 * Takes a date and converts it to correct format and then returns the formatted date as a 
+	 * String so it can be passed correctly to another method.
+	 */
+	
+	
+	/*
+	 * Test Seventeen: 
+	 * Test Format: dd/MM/yyyy
+	 */
+	@Test
+	public void testReturnValidDate1() {
+		ChatBot bot = new ChatBot(); 
+		assertTrue(bot.dateValidation("16/06/2022")); 
+	}
 }
