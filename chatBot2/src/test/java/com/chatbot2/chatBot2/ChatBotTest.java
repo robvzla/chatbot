@@ -354,4 +354,33 @@ public class ChatBotTest
 		String expected = "15/11/2022";
 		assertEquals(actual, expected); 
 	}
+	
+	
+	/*
+	 * dateValidation()
+	 * Takes in dates in different formats and validates the date is in the correct format and returns a boolean. 
+	 */
+
+
+	/*
+	 * Test Ten: 
+	 * Test Format: dd/MM/yyyy
+	 */
+	@Test
+	public void testDateValidation1() {
+		ChatBot bot = new ChatBot(); 
+		assertTrue(bot.dateValidation("16/06/2022")); 
+	}
+	
+	
+	/*
+	 * Test Eleven: 
+	 * Test Format: dd-MM-yyyy
+	 */
+	@Test
+	public void testDateValidation2() {
+		ChatBot bot = new ChatBot(); 
+		assertTrue(bot.dateValidation("16-06-2022")); 
+	}
+	
 }
