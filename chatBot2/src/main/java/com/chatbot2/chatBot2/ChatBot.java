@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -243,6 +244,26 @@ public class ChatBot
 		} else {
 			return false; 
 		}
+	}
+
+	// Question to exit the do while loop
+	// Method 6: 
+	public boolean exitLoop() 
+	{
+		System.out.println("Robot : Would you like to go somewhere else?");
+		String userAnswer = IOUtils.readInputTextLine().trim(); 
+		while (!userAnswer.toLowerCase().equals("yes") && !userAnswer.toLowerCase().equals("no")) {
+			System.out.println("Robot : Sorry, I didn't get that. Could you answer yes or no please?");
+			userAnswer = IOUtils.readInputTextLine(); 
+		}
+
+		if (userAnswer.equalsIgnoreCase("yes")) {
+			System.out.println("Robot : That's great, where else would you like to go?");
+			return false; 
+		} else  {
+			System.out.println("Robot : It sounds like you have your holiday planned out! Let me generate some fab wardrobe suggestions!");
+		}
+		return true;
 	}
 	/*
 	 * Change the AskBot() method.
