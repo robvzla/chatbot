@@ -151,46 +151,46 @@ public class ChatBotTest
 	}
 	*/
 	
-	/*
+	/* NO LONGER USING HASHMAP SO COMMENTING OUT THIS CODE
 	 * 	In this case, the string pattern that exits in the AIML file does not
 	 * 	match with the one that activates the method to collect information in the
 	 * 	hashmap. Therefore, no value is stored and size of the hashmap remains zero
 	 */
-	@Test
-	public void testExtractInformation2()
-	{
-		ChatBot bot = new ChatBot();
-		HashMap<String, String> test = new HashMap<>();
-		String userInput = "Rome";
-		String botResponse = "Where would you like to go";
-		String userInput2 = "22/04/2022";
-		String botResponse2 = "Nice, when you visit?";
-		test = bot.extractInformation(botResponse, userInput);
-		test = bot.extractInformation(botResponse2, userInput2);
-		int actual = test.size();
-		int expected = 0;
-		assertEquals(expected, actual);
-	}
+//	@Test
+//	public void testExtractInformation2()
+//	{
+//		ChatBot bot = new ChatBot();
+//		HashMap<String, String> test = new HashMap<>();
+//		String userInput = "Rome";
+//		String botResponse = "Where would you like to go";
+//		String userInput2 = "22/04/2022";
+//		String botResponse2 = "Nice, when you visit?";
+//		test = bot.extractInformation(botResponse, userInput);
+//		test = bot.extractInformation(botResponse2, userInput2);
+//		int actual = test.size();
+//		int expected = 0;
+//		assertEquals(expected, actual);
+//	}
 	
-	/*
+	/* NO LONGER USING HASHMAP SO COMMENTING OUT THIS CODE
 	 * 	Test case checks that the data (location and date) stored in the hashmap are
 	 * 	stored as a key > value pair
 	 */
-	@Test
-	public void testExtractInformation3()
-	{
-		ChatBot bot = new ChatBot();
-		HashMap<String, String> test = new HashMap<>();
-		String userInput = "Rome";
-		String botResponse = "Noted, what date will you visit?";
-		String userInput2 = "22/04/2022";
-		String botResponse2 = "Noted, is there any other place?";
-		test = bot.extractInformation(botResponse, userInput);
-		test = bot.extractInformation(botResponse2, userInput2);
-		String value = bot.getHolidays().get("Rome");
-		String  expected = "22/04/2022";
-		assertEquals(expected, value);
-	}
+//	@Test
+//	public void testExtractInformation3()
+//	{
+//		ChatBot bot = new ChatBot();
+//		HashMap<String, String> test = new HashMap<>();
+//		String userInput = "Rome";
+//		String botResponse = "Noted, what date will you visit?";
+//		String userInput2 = "22/04/2022";
+//		String botResponse2 = "Noted, is there any other place?";
+//		test = bot.extractInformation(botResponse, userInput);
+//		test = bot.extractInformation(botResponse2, userInput2);
+//		String value = bot.getHolidays().get("Rome");
+//		String  expected = "22/04/2022";
+//		assertEquals(expected, value);
+//	}
 	
 	@Test
 	public void testWildCharactersValidation()
@@ -549,12 +549,21 @@ public class ChatBotTest
 	public void testExitLoopFalse(){
 		ChatBot bot = new ChatBot();
 		boolean isFalse = false; 
-		try{
-			isFalse = bot.exitLoop(); // Type yes into console to test
-		} catch (MalformedURLException | ParseException e) {
-			fail(); 
-		}
+		isFalse = bot.exitLoop(); // Type yes into console to test
 		assertFalse(isFalse); 	
 	}
+	
+	/*
+	 * Test Twenty-Six: 
+	 * Test by answering 'no'. Should return true
+	 */
+	@Test
+	public void testExitLoopTrue(){
+		ChatBot bot = new ChatBot();
+		boolean isTrue = false; 
+		isTrue = bot.exitLoop(); // Type no into console to test
+		assertTrue(isTrue); 	
+	}
+
 	
 }
