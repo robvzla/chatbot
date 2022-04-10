@@ -172,8 +172,12 @@ public class ChatBot
 		return response;
 	}
 
-
-	//	Bot takes user input and goes through it AIML document to find an answer, then send back a response
+	/*
+	 * Change the AskBot() method.
+	 * This method will now return the userInput as a String which will be used in the runBot() method. 
+	 * It will no longer try to follow a loop pattern from an AIML file. 
+	 */
+//	Bot takes user input and goes through it AIML document to find an answer, then send back a response
 	public String AskBot() throws IOException 
 	{
 		String botAnswer ="";
@@ -207,41 +211,17 @@ public class ChatBot
 						"STATE=" + request + ":THAT=" + ((History) chatSession.thatHistory.get(0)).get(0)
 						+ ":TOPIC=" + chatSession.predicates.get("topic"));
 			}
-
-			// Check to see if the response has a location, given in the city.txt
-			// If it does then change the resources path to the specific aiml file that we want to use to get responses from that
-
-			// Add a setter for the resources path to change it
-
-
-
-
-			//	This connects to the AIML doc and sends back a response based on what user asks
-
+			//	This connects to the AIML doc and sends back a response based on what user asks 
 			String response = chatSession.multisentenceRespond(request);
 
-			//	Removes any wild characters in the bot's response and replace it with a more human readable word or symbol. E.g. "&gt;", "&lt;", "slash"
+			//	Checks for wild characters
 			response = wildCharactersValidation(response);
-			/*	Stores location and date from user. This will later be used by the Weather Class to request weather information
-			 * 	from the extracted location and date
-			 */
-			extractInformation(response, request);
 
-			botAnswer = response;
 			System.out.println("Robot : " + response);
+			//System.out.println(response);
 
-			/*	Final transition in the AIML file.
-			 * 	The string inside contains activates the final template in the AIML file, this
-			 * 	displays location and dates collected from the interaction between bot and user.
-			 */
-			if (response.contains("Just to confirm, you will visit")) 
-			{
-				for (String i : getHolidays().keySet()) 
-				{
-					System.out.println("Robot : " + i + " on " + getHolidays().get(i));
-				}
-				System.out.println("Robot : " + "Right ?");
-			}
+			return request;
+
 		}
 		return botAnswer;
 	}
