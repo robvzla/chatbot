@@ -282,6 +282,18 @@ public class ChatBotTest
 		assertEquals(0, bot.findArrayLocation("Caracas")); 
 	}
 	
+	/*
+	 * Test Five: 
+	 * Test to see if the method can find a location
+	 */
+	@Test
+	public void testFindArrayLocation2() {
+		ChatBot bot = new ChatBot(); 
+		bot.addLocationToList("Caracas"); 
+		bot.addLocationToList("Ahascragh"); 
+		bot.addLocationToList("Dublin"); 
+		assertEquals(1, bot.findArrayLocation("Ahascragh")); 
+	}
 
 
 
