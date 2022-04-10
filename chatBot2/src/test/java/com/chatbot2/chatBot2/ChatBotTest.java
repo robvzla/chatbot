@@ -325,4 +325,15 @@ public class ChatBotTest
 		ChatBot bot = new ChatBot(); 
 		assertTrue(bot.addLocationToList("Caracas")); 
 	}
+	
+	/*
+	 * Test Eight: 
+	 * Test by adding a location twice. AssertFalse the second time the same location is added. 
+	 */
+	@Test 
+	public void testAddLocationToListReturnFalse() {
+		ChatBot bot = new ChatBot(); 
+		bot.addLocationToList("Caracas"); 
+		assertFalse(bot.addLocationToList("Caracas")); 
+	}
 }
