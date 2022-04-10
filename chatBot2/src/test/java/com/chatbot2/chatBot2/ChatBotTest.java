@@ -511,5 +511,25 @@ public class ChatBotTest
 		assertTrue(bot.dateValidation("16/06-2022")); 
 	}
 	
+	/*
+	 * addDateToArrayList() 
+	 * This method is used when the location already exists as a nested ArrayList in the outer ArrayList. 
+	 * It uses the location (int value returned from findArrayLocation) to get that ArrayList and 
+	 * add the validated date to it.
+	 */
+
+	
+	/* 
+	 * Test Twenty-Four: 
+	 * Test adding the date to an array.  
+	 */
+	@Test
+	public void testAddDateToArrayList() {
+		ChatBot bot = new ChatBot(); 
+		bot.addLocationToList("Ahascragh"); 
+		int location = bot.findArrayLocation("Ahascragh"); 
+		String date = "20-05-2022"; 
+		assertTrue(bot.addDateToArrayList(location, date)); 	
+	}
 	
 }
