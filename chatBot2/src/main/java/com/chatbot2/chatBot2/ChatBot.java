@@ -4,6 +4,9 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -208,6 +211,21 @@ public class ChatBot
 	public String whatDate() {
 		String userInput = IOUtils.readInputTextLine(); 
 		return userInput; 
+	}
+
+	// Date Validation
+	public boolean dateValidation(String date) {
+		date = date.replace('/', '-'); 
+		date = date.replace('.', '-'); 
+		try {
+			DateFormat df = new SimpleDateFormat(DATE_FORMAT);
+			df.setLenient(false);
+			df.parse(date);
+			return true;
+		} catch (ParseException e) {
+			return false;
+		}
+
 	}
 	/*
 	 * Change the AskBot() method.
