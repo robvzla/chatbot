@@ -30,7 +30,7 @@ public class ChatBot
 	final String DATE_FORMAT = "dd-MM-yyyy";
 
 
-//	Constructor set up the bot
+	//	Constructor set up the bot
 	public ChatBot() 
 	{
 		this.botName = "super";
@@ -75,7 +75,7 @@ public class ChatBot
 		}
 	}
 
-	// Get Resources Path Method
+//	Get's the path to the resource folder located in the project
 	public static String getResourcesPath() 
 	{
 		File currentDirectory = new File(".");
@@ -89,7 +89,6 @@ public class ChatBot
 	}
 
 
-	// Method to validate the cities
 	public Boolean cityValidation(String userInput) throws IOException 
 	{
 		File citiesText = new File(".");
@@ -106,8 +105,9 @@ public class ChatBot
 		{
 			if (str.equalsIgnoreCase(userInput)) 
 			{
+				br.close();
 				return true;
-			}
+			} 
 		}
 		br.close();
 		return false;
@@ -172,12 +172,21 @@ public class ChatBot
 		return response;
 	}
 
+	// Loop to check if the arrayList contains the location
+		public boolean checkArrayLocation(String userInput){
+			for(int i = 0; i < list.size(); i++) {
+				if (list.get(i).get(0).contains(userInput)) {
+					return true; 
+				}
+			}
+			return false; 		
+		}
 	/*
 	 * Change the AskBot() method.
 	 * This method will now return the userInput as a String which will be used in the runBot() method. 
 	 * It will no longer try to follow a loop pattern from an AIML file. 
 	 */
-//	Bot takes user input and goes through it AIML document to find an answer, then send back a response
+	//	Bot takes user input and goes through it AIML document to find an answer, then send back a response
 	public String AskBot() throws IOException 
 	{
 		String botAnswer ="";
