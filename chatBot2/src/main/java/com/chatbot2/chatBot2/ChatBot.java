@@ -319,4 +319,55 @@ public class ChatBot
 		return botAnswer;
 	}
 
+
+	// Method to run the bot - comprised of multiple methods
+	public boolean runBot() throws IOException, ParseException {
+		// Method 1: Ask Bot - get the user input
+		String input = AskBot(); 
+
+		// Method 2: Validate the return string from AskBot, 
+		// if it is a valid city (use the cityValidation method) add to the array
+		if(cityValidation(input)) {
+			// Check to see if the input value is already a value in the 2d array
+			// If it is - break the loop 
+			// If it isn't then create a new ArrayList within the original ArrayList
+			// Set the first value to input
+			addLocationToList(input); 
+		} else { // If the input isn't a valid city, loop until it is one
+			while(!cityValidation(input)) {
+				input = AskBot(); 
+			}
+			addLocationToList(input);
+		}
+
+		// Method 3: Hard code asking the user for a date, return it as a string
+		System.out.print("Human : ");
+		String whatDate = whatDate(); 
+		int location; 
+
+		// Method 4: Validate the date
+		if(dateValidation(whatDate)) 
+		{
+			// Find the array with the userInput
+			// Method 5: If date is valid get the index value of the location
+			// Convert the date to correct format
+			whatDate = returnValidDate(whatDate); 
+			location = findArrayLocation(input); 
+			addDateToArrayList(location, whatDate); 
+		} 
+		else 
+		{
+			while(!dateValidation(whatDate)) 
+			{
+				System.out.println("Sorry, I didn't understand that. Please give me a date in the format DD-MM-YYYY!");
+				whatDate = whatDate(); 
+			}
+			whatDate = returnValidDate(whatDate); 
+			location = findArrayLocation(input); 
+			addDateToArrayList(location, whatDate); 
+		}
+
+		return exitLoop(); 
+	}
+
 }
