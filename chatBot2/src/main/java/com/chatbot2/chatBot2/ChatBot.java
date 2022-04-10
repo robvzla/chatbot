@@ -75,7 +75,7 @@ public class ChatBot
 		}
 	}
 
-//	Get's the path to the resource folder located in the project
+	//	Get's the path to the resource folder located in the project
 	public static String getResourcesPath() 
 	{
 		File currentDirectory = new File(".");
@@ -173,14 +173,36 @@ public class ChatBot
 	}
 
 	// Loop to check if the arrayList contains the location
-		public boolean checkArrayLocation(String userInput){
-			for(int i = 0; i < list.size(); i++) {
-				if (list.get(i).get(0).contains(userInput)) {
-					return true; 
-				}
+	public boolean checkArrayLocation(String userInput){
+		for(int i = 0; i < list.size(); i++) {
+			if (list.get(i).get(0).contains(userInput)) {
+				return true; 
 			}
-			return false; 		
 		}
+		return false; 		
+	}
+
+	// Loop to find the index of the array that contains the location
+	public int findArrayLocation(String userInput) {
+		int location = 0; 
+		for(int i = 0; i < list.size(); i++) {
+			if(list.get(i).get(0).contains(userInput)) {
+				location = i; 
+			}
+		}
+		return location; 
+	}
+
+
+	// Add the location to the arrayList
+	public boolean addLocationToList(String userInput) {
+		if (!checkArrayLocation(userInput)) {
+			list.add(new ArrayList<String>()); 
+			list.get(list.size() - 1).add(userInput);
+			return true; 
+		}
+		return false; 
+	}
 	/*
 	 * Change the AskBot() method.
 	 * This method will now return the userInput as a String which will be used in the runBot() method. 
