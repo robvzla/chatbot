@@ -249,5 +249,19 @@ public class ChatBotTest
 		assertFalse(bot.checkArrayLocation(location)); 
 	}
 
+	
+	/*
+	 * Test Three: 
+	 * Test to see if it will return true with a location added.
+	 */
+	@Test
+	public void testCheckArrayLocationReturnTrue() {
+		ChatBot bot = new ChatBot(); 
+		String location = "Caracas"; 
+		bot.addLocationToList(location);
+		assertTrue(bot.checkArrayLocation(location)); 
+	}
+
+
 
 }
