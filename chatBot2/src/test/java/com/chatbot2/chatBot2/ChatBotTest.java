@@ -8,11 +8,14 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
+import com.chatbot1.chatBot1.FionaChatBot;
+
 
 public class ChatBotTest 
 {
 	// Test greeting method
 
+	// Test One: 
 	// Test the greeting string. 
 	@Test
 	public void greetingTest1() {
@@ -21,6 +24,7 @@ public class ChatBotTest
 		assertEquals(s1, bot.getGreeting());
 	}
 
+	// Test Two: 
 	// Test to check that yes is accepted, boolean should return true
 	// The greeting method gives the user an option to proceed with the bot
 	@Test
@@ -30,6 +34,7 @@ public class ChatBotTest
 		assertTrue(b);
 	}
 
+	// Test Three: 
 	// Test to check that no is accepted, boolean should return false
 	@Test
 	public void greetingMethodTestForNoOrN() {
@@ -38,15 +43,20 @@ public class ChatBotTest
 		assertFalse(b);
 	}
 
+	/*
+	 * This has been made redundant as we are no longer using a HashMap but are using a 2d ArrayList instead
+	// Test Four: 
 	// Test the HashMap - RETURNING FALSE AND SHOULD NOT BE, CHANGE LATER
 	@Test
 	public void hashMapTest() {
 		ChatBot bot = new ChatBot();
 		assertTrue(bot.getHolidays() instanceof HashMap);
 	}
+	*/
 
 	/*	
-	 * 	Test Case: Checks if bot gives an answer after typing something
+	 * Test Five: 
+	 * Test Case: Checks if bot gives an answer after typing something
 	 */
 	@Test
 	public void testAskBot() throws IOException 
@@ -59,6 +69,7 @@ public class ChatBotTest
 	}
 	
 	/*	
+	 * Test Six: 
 	 * 	Test Case: Checks if path to the bot's resource folder exists
 	 */
 	@Test
@@ -69,7 +80,8 @@ public class ChatBotTest
 		assertTrue(file.exists());
 	}
 	
-	/* Test Case: Checks whether user inputs a valid city or not
+	/* Test Seven: 
+	 * Test Case: Checks whether user inputs a valid city or not
 	 * It uses a list of city (text) we created to check if the location is valid or not
 	 * if it fails it either means the location is not valid (e.g. Dublinnn23) or the city 
 	 * does not exist in the text file
@@ -84,7 +96,8 @@ public class ChatBotTest
 		assertEquals(expected, actual);
 	}
 	
-	/*	If a input city contains a number, then is not valid 
+	/* Test Eight: 
+	 * If a input city contains a number, then is not valid 
 	 * 	and it will return false
 	 */
 	@Test
@@ -97,7 +110,8 @@ public class ChatBotTest
 		assertEquals(expected, actual);
 	}
 	
-	/*	If a input city does not exits, it returns false 
+	/* Test Nine: 
+	 * If a input city does not exits, it returns false 
 	 */
 	@Test
 	public void testCityValidation3() throws IOException 
@@ -109,12 +123,18 @@ public class ChatBotTest
 		assertEquals(expected, actual);
 	}
 	
-	/*	The hashmap starts collecting information only in a given pattern
+	
+	
+	
+	/*	This has been made redunandant as we are now using a 2d ArrayList
+	 * Test Ten: 
+	 * The hashmap starts collecting information only in a given pattern
 	 * 	In this case, holiday topic is the context. The questions in the AIML file
 	 * 	conducts the user to input location and date in an order, the string pattern
 	 * 	that activates the hashmap to store information is when the user responds
 	 * 	to the specific question the bot is asking her/him. 
 	 */
+	/*
 	@Test
 	public void testExtractInformation1()
 	{
@@ -130,6 +150,7 @@ public class ChatBotTest
 		int expected = 1;
 		assertEquals(expected, actual);
 	}
+	*/
 	
 	/*
 	 * 	In this case, the string pattern that exits in the AIML file does not
@@ -180,6 +201,35 @@ public class ChatBotTest
 		botResponse = bot.wildCharactersValidation(botResponse);
 		String  expected = "/";
 		assertEquals(expected, botResponse);
+	}
+	
+	
+	// Tests for Milestone 2
+	/*
+	 * I reduced the code in the AskBot() method so it is not trying to loop through one page of AIML.
+	 * It will return the userInput if the user does not type q or wq (they exit the program). 
+	 * If the user types q or wq then the program terminates with a System.exit(); 
+	 * The runBot() method uses the String return value to validate it as a location and then add it to a 2d ArrayList
+	 * in order to store it for use with the Weather API. 
+	 */
+	
+
+	/*
+	 * Test One: 
+	 * Test to see if I get back the correct string that I type in 
+	 */
+	@Test
+	public void testAskMethodGetCorrectStringReturned() {
+		ChatBot bot = new ChatBot(); 
+		String actual = ""; 
+		try {
+			actual = bot.AskBot();  // Type Hello into the console and then go back to see if it is a green/red bar result
+		} catch (IOException e) {
+			fail(); 
+		}
+		String expected = "Hello"; 
+		assertEquals(actual, expected); 
+
 	}
 
 }
