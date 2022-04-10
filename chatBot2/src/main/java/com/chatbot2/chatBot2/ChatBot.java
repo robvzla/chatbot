@@ -227,6 +227,14 @@ public class ChatBot
 		}
 
 	}
+
+
+	// Convert the valid date to correct format
+	public String returnValidDate(String date) {
+		date = date.replace('/', '-');
+		date = date.replace('.', '-'); 
+		return date; 
+	}
 	/*
 	 * Change the AskBot() method.
 	 * This method will now return the userInput as a String which will be used in the runBot() method. 
