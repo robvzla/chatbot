@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.alicebot.ab.Bot;
@@ -25,26 +26,19 @@ public class ChatBot
 	private String location;
 	private String date;
 	private static final String greeting = "Hi, I heard you're going on holiday? Do you want some help planning your wardrobe?";
+	private ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>(); // use ArrayList to hold location and date information
+	final String DATE_FORMAT = "dd-MM-yyyy";
 
 
-	// HashMap holds the location and date (given by user) as a key > value pair so the Weather Class can request
-	// weather information to the API on the specified location and date.
-	// May consider changing the HashMap to a <String, ArrayList<String>> HashMap to make interaction easier with
-	// the weather API
-	private HashMap<String, String> holidays;
-
-	//	Constructor set up the bot
+//	Constructor set up the bot
 	public ChatBot() 
 	{
-		botName = "super";
-		resourcesPath = getResourcesPath();
+		this.botName = "super";
+		this.resourcesPath = getResourcesPath();
 		MagicBooleans.trace_mode = TRACE_MODE;
-		bot = new Bot("super", resourcesPath);
-		chatSession = new Chat(bot);
+		this.bot = new Bot(botName, resourcesPath);
+		this.chatSession = new Chat(bot);
 		bot.brain.nodeStats();
-		this.location = "";
-		this.date = "";
-		this.holidays = new HashMap<String, String>();
 	}
 
 
