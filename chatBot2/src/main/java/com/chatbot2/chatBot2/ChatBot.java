@@ -50,10 +50,11 @@ public class ChatBot
 	public String getGreeting() {
 		return this.greeting;
 	}
-
-	public HashMap<String, String> getHolidays(){
-		return this.holidays;
-	}
+	
+//	NOT USING HASHMAP SO COMMENTING THIS OUT
+//	public HashMap<String, String> getHolidays(){
+//		return this.holidays;
+//	}
 
 
 	// Methods
@@ -117,7 +118,7 @@ public class ChatBot
 		return false;
 	}
 
-
+	/* 	NOT USING HASH MAP SO COMMENTING THIS OUT
 	//	Method gets the input holidays (location & date) from user and store it in a hashmap
 	public HashMap<String, String> extractInformation(String response, String request) 
 	{
@@ -140,15 +141,16 @@ public class ChatBot
 			//				response = chatSession.multisentenceRespond(request);
 			//			}
 
-		}
+		//} /*
 		//	Extracting user's date
-		if (response.contains("Noted, is there any other place?")) 
+		/*if (response.contains("Noted, is there any other place?")) 
 		{
 			date = request;
 			holidays.put(location, date);
 		}
 		return holidays;
 	}
+	*/
 
 
 	public String wildCharactersValidation(String response)
