@@ -336,4 +336,22 @@ public class ChatBotTest
 		bot.addLocationToList("Caracas"); 
 		assertFalse(bot.addLocationToList("Caracas")); 
 	}
+	
+
+	/*
+	 * whatDate()
+	 * This is a simple method that will just return the userInput given. 
+	 */
+	
+	
+	/*
+	 * Test Nine: 
+	 */
+	@Test
+	public void testWhatDate() {
+		ChatBot bot = new ChatBot(); 
+		String actual = bot.whatDate(); // Type 15/11/2022 to get a green bar
+		String expected = "15/11/2022";
+		assertEquals(actual, expected); 
+	}
 }
