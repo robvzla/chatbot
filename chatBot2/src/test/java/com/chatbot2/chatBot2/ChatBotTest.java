@@ -470,4 +470,14 @@ public class ChatBotTest
 		ChatBot bot = new ChatBot(); 
 		assertTrue(bot.dateValidation("16.06.2022")); 
 	}
+	
+	/*
+	 * Test Twenty: 
+	 * Test Format: dd/MM.yyyy
+	 */
+	@Test
+	public void testReturnValidDate4() {
+		ChatBot bot = new ChatBot(); 
+		assertTrue(bot.dateValidation("16/06.2022")); 
+	}
 }
