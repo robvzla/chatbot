@@ -413,5 +413,21 @@ public class ChatBot
 		long numberOfDays = ChronoUnit.DAYS.between(today, requestedDay);		
 		return numberOfDays;
 	}
+	
+	public String ClothesSuggestions(int temperature) 
+	{
+		if (temperature < 10) 
+		{
+			return "Robot : I recommend you to pack gloves, warm hats, boots and heavy coats";
+		} 
+		else if (temperature < 18) 
+		{
+			return "Robot : I recommend you to pack long-sleeved shirts, light sweaters, shoes and light jackets";
+		}
+		else 
+		{
+			return "Robot : I recommend you to pack v-neck shirts, shorts, sandals and breathable fabrics";
+		}
+	}
 
 }
