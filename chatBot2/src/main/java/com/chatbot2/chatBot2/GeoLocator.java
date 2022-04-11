@@ -29,7 +29,6 @@ public class GeoLocator
 		try 
 		{
 			result = new StringBuilder();
-			//			URL url = new URL(urlString);
 			URLConnection connection = url.openConnection();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String line;
@@ -54,13 +53,9 @@ public class GeoLocator
 
 		//	Extracting information
 		String resultSet = data.toString();
-		//	Testing purposes
-//		System.out.println("JSON =" + resultSet);
 
 		String result = resultSet;
-		//	Testing purposes
-//		System.out.println(result);
-		
+
 		ArrayList<String> coordinates = new ArrayList<>();
 		//	Eliminate unnecessary information from the URL request
 		String cleanBody[] = result.split("},\"lat\":");
