@@ -14,7 +14,6 @@ import java.util.HashMap;
 
 import org.junit.Test;
 
-import com.chatbot1.chatBot1.FionaChatBot;
 
 public class ChatBotTest 
 {
@@ -612,6 +611,18 @@ public class ChatBotTest
 		ChatBot bot = new ChatBot();
 		int temperature = 17;
 		String  expected = "Robot : I recommend you to pack long-sleeved shirts, light sweaters, shoes and light jackets";
+		assertTrue(expected.contains(bot.ClothesSuggestions(temperature)));
+	}
+	
+	/*
+	 * Test Case: testing clothes suggestions for high temperatures
+	 */
+	@Test
+	public void testClothesSuggestions3()
+	{
+		ChatBot bot = new ChatBot();
+		int temperature = 22;
+		String  expected = "Robot : I recommend you to pack v-neck shirts, shorts, sandals and breathable fabrics";
 		assertTrue(expected.contains(bot.ClothesSuggestions(temperature)));
 	}
 
