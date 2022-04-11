@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
 
 public class GeoLocator 
 {
@@ -45,5 +46,32 @@ public class GeoLocator
 			System.out.println("Error = " + e);
 		}
 		return result;
+	}
+	
+	public ArrayList<String> Coordinates() 
+	{
+		StringBuilder data = DataRequest();
+
+		//	Extracting information
+		String resultSet = data.toString();
+		//	Testing purposes
+//		System.out.println("JSON =" + resultSet);
+
+		String result = resultSet;
+		//	Testing purposes
+//		System.out.println(result);
+		
+		ArrayList<String> coordinates = new ArrayList<>();
+		//	Eliminate unnecessary information from the URL request
+		String cleanBody[] = result.split("},\"lat\":");
+		String CleanEnd[] = cleanBody[1].split(",\"country\":");
+		String coords[] = CleanEnd[0].split(",\"lon\":");
+
+		/*
+		 * Index Zero only stores Latitude and Index 1 only stores Longitude
+		 */
+		coordinates.add(coords[0]);
+		coordinates.add(coords[1]);
+		return coordinates;
 	}
 }
