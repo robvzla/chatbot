@@ -590,6 +590,18 @@ public class ChatBotTest
 		long expectedNumberOfDays = ChronoUnit.DAYS.between(today, convertActual);
 		assertEquals(expectedNumberOfDays, actualNumberOfDays);
 	}
+	
+	/*
+	 * Test Case: testing clothes suggestions for lower temperatures
+	 */
+	@Test
+	public void testClothesSuggestions1()
+	{
+		ChatBot bot = new ChatBot();
+		int temperature = -2;
+		String  expected = "Robot : I recommend you to pack gloves, warm hats, boots and heavy coats";
+		assertTrue(expected.contains(bot.ClothesSuggestions(temperature)));
+	}
 
 	
 }
