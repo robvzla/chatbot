@@ -5,6 +5,8 @@ import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
+import java.util.ArrayList;
+import java.util.Map;
 
 public class Weather 
 {
@@ -46,5 +48,31 @@ public class Weather
 			System.out.println("Error = " + e);
 		}
 		return result;
+	}
+	
+	public ArrayList<String> ForecastTemperatures() 
+	{
+		StringBuilder data = DataRequest();
+
+		//	Extracting information
+		Map<String, Object> resultToMap = jsonToMap(data.toString());
+		//	Testing purposes
+//		System.out.println("JSON =" + resultToMap);
+
+		String dataString = resultToMap.get("daily").toString();
+		//	Testing purposes
+//		System.out.println(dataString);
+		
+		ArrayList<String> temperatureForecast = new ArrayList<>();
+		//	Split the string on dt= so we can easily extract the temperature of a given day
+		String arr[] = dataString.split("dt=");
+		for (int i = 1; i < arr.length; i++) 
+		{
+			//	Extracts only the temperature in each day
+			String[] cleaning = arr[i].split("day=");
+			String[] temperatures = cleaning[1].split(", min=");
+			temperatureForecast.add(temperatures[0]);
+		}
+		return temperatureForecast;
 	}
 }
