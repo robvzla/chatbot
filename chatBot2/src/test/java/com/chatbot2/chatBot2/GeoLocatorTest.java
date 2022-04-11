@@ -3,8 +3,10 @@ package com.chatbot2.chatBot2;
 import static org.junit.Assert.*;
 
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 
 import org.junit.Test;
+
 
 
 public class GeoLocatorTest {
@@ -19,6 +21,15 @@ public class GeoLocatorTest {
 		assertFalse(isEmpty);
 	}
 	
-	
+	@Test
+	public void testCoordinates() throws MalformedURLException
+	{
+		//	Dublin coordinates
+		GeoLocator geoLocator = new GeoLocator("Dublin");
+		ArrayList<String> coordinates = geoLocator.Coordinates();
+		int  actual = coordinates.size();
+		int expected = 2;
+		assertEquals(expected, actual);
+	}
 
 }
