@@ -9,8 +9,12 @@ import org.junit.Test;
 
 
 
-public class GeoLocatorTest {
-
+public class GeoLocatorTest 
+{
+	
+	/*
+	 * Test Case: Checking if API gives back a response after a location call
+	 */
 	@Test
 	public void testDataRequest() throws MalformedURLException
 	{
@@ -21,6 +25,10 @@ public class GeoLocatorTest {
 		assertFalse(isEmpty);
 	}
 	
+	/*
+	 * Test Case: Checks if latitude and longitude are stored in the ArrayList by checking 
+	 * its size. It stores latitude and longitude, so size must be 2
+	 */
 	@Test
 	public void testCoordinates() throws MalformedURLException
 	{
