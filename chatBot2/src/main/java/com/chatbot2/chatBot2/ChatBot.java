@@ -21,6 +21,7 @@ import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
 import org.alicebot.ab.utils.IOUtils;
 
+
 public class ChatBot 
 {
 	// Attributes
@@ -253,7 +254,7 @@ public class ChatBot
 
 	// Question to exit the do while loop
 	// Method 6: 
-	public boolean exitLoop() 
+	public boolean exitLoop() throws MalformedURLException, ParseException 
 	{
 		System.out.println("Robot : Would you like to go somewhere else?");
 		String userAnswer = IOUtils.readInputTextLine().trim(); 
@@ -267,6 +268,32 @@ public class ChatBot
 			return false; 
 		} else  {
 			System.out.println("Robot : It sounds like you have your holiday planned out! Let me generate some fab wardrobe suggestions!");
+			/*
+			 * First loop gets location, second loop gets the date on a given location
+			 */
+			for (int i = 0; i < list.size(); i++) 
+			{
+				/*
+				 * GeoLocator takes the name of the city and gets the latitude and longitude so
+				 * we can forecast the temperature in a seven days range
+				 */
+				GeoLocator geoLocator = new GeoLocator(list.get(i).get(0));
+				ArrayList<String> coordinates = geoLocator.Coordinates();
+				String latitude = coordinates.get(0);
+				String longitude = coordinates.get(1);
+				for (int j = 1; j < list.get(i).size(); j++) 
+				{
+					long getDayDifference = NumberOfDays(list.get(i).get(j));
+					int day = (int) getDayDifference; 
+			
+					Weather weather = new Weather(latitude, longitude);
+					int temperature = weather.RequestedTemperature(day);
+					System.out.println("Robot : " + "Temperature in " + list.get(i).get(0) + " for " + list.get(i).get(j) + " is " + temperature + " C");
+					String suggestion = ClothesSuggestions(temperature);
+					System.out.println(suggestion);
+				}
+
+			}
 		}
 		return true;
 	}
