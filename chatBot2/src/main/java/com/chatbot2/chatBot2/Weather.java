@@ -6,7 +6,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 public class Weather 
 {
@@ -74,5 +78,12 @@ public class Weather
 			temperatureForecast.add(temperatures[0]);
 		}
 		return temperatureForecast;
+	}
+	
+	//	Method converts JSON objects into a Map String object for easier data extraction
+	public static Map<String, Object> jsonToMap(String str)
+	{
+		Map<String, Object> map = new Gson().fromJson(str, new TypeToken<HashMap<String, Object>>() {}.getType());
+		return map;
 	}
 }
