@@ -79,13 +79,7 @@ public class Weather
 
 		//	Extracting information
 		Map<String, Object> resultToMap = jsonToMap(data.toString());
-		//	Testing purposes
-//		System.out.println("JSON =" + resultToMap);
-
 		String dataString = resultToMap.get("daily").toString();
-		//	Testing purposes
-//		System.out.println(dataString);
-		
 		ArrayList<String> temperatureForecast = new ArrayList<>();
 		//	Split the string on dt= so we can easily extract the temperature of a given day
 		String arr[] = dataString.split("dt=");
