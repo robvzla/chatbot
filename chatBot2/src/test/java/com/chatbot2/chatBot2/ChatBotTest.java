@@ -602,6 +602,18 @@ public class ChatBotTest
 		String  expected = "Robot : I recommend you to pack gloves, warm hats, boots and heavy coats";
 		assertTrue(expected.contains(bot.ClothesSuggestions(temperature)));
 	}
+	
+	/*
+	 * Test Case: testing clothes suggestions for medium temperatures
+	 */
+	@Test
+	public void testClothesSuggestions2()
+	{
+		ChatBot bot = new ChatBot();
+		int temperature = 17;
+		String  expected = "Robot : I recommend you to pack long-sleeved shirts, light sweaters, shoes and light jackets";
+		assertTrue(expected.contains(bot.ClothesSuggestions(temperature)));
+	}
 
 	
 }
