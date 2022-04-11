@@ -11,6 +11,9 @@ import org.junit.Test;
 public class WeatherTest 
 {
 
+	/*
+	 * Test Case: Checking if API gives back a response after a Weather call
+	 */
 	@Test
 	public void testDataRequest() throws MalformedURLException
 	{
@@ -21,6 +24,10 @@ public class WeatherTest
 		assertFalse(isEmpty);
 	}
 	
+	/*
+	 * Test Case: Checking if ForecastTempetures is extracting the temperature
+	 * in a range of 8 days, the first one in the array being the current day plus 7 days ahead.
+	 */
 	@Test
 	public void testForecastTemperatures() throws MalformedURLException
 	{
@@ -32,6 +39,10 @@ public class WeatherTest
 		assertEquals(expected, actual);
 	}
 
+	/*
+	 * Test Case: Checking if Requested Temperature in a specific day matches the temperature in the list
+	 * of temperatures forecasted by the OpenWeatherMapAPI
+	 */
 	@Test
 	public void testRequestedTemperature() throws MalformedURLException
 	{
