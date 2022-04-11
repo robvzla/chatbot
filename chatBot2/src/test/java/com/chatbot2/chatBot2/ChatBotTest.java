@@ -6,9 +6,15 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.junit.Test;
+
+import com.chatbot1.chatBot1.FionaChatBot;
 
 public class ChatBotTest 
 {
@@ -563,6 +569,26 @@ public class ChatBotTest
 		boolean isTrue = false; 
 		isTrue = bot.exitLoop(); // Type no into console to test
 		assertTrue(isTrue); 	
+	}
+	
+	/*
+	 * Test Case: Checks if days differences is calculated accurately. OpenWeatherMap API can only
+	 * forecast 7 days ahead, so we need to check days differences at every user request
+	 */
+	@Test
+	public void testNumberOfDays1() throws ParseException
+	{
+		ChatBot bot = new ChatBot();
+		String date = "10-05-2022";
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		Date dateValue = formatter.parse(date);
+		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+		String newDateString = output.format(dateValue);
+		LocalDate convertActual = LocalDate.parse(newDateString);
+		LocalDate today = LocalDate.now();
+		long  actualNumberOfDays = bot.NumberOfDays(date);
+		long expectedNumberOfDays = ChronoUnit.DAYS.between(today, convertActual);
+		assertEquals(expectedNumberOfDays, actualNumberOfDays);
 	}
 
 	
