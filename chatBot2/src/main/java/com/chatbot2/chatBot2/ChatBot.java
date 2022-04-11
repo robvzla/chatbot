@@ -8,7 +8,10 @@ import java.net.MalformedURLException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 
 import org.alicebot.ab.Bot;
@@ -354,8 +357,27 @@ public class ChatBot
 			// Method 5: If date is valid get the index value of the location
 			// Convert the date to correct format
 			whatDate = returnValidDate(whatDate); 
+			/*
+			 * Since Weather API can only forecast 7 days ahead, we validate also check the day's
+			 * difference between current day and the date input by the user
+			 */
+			long getDayDifference = NumberOfDays(whatDate);
+			int day = (int) getDayDifference; 
+
+			if (day > 7 || day < 0) 
+			{
+				do 
+				{
+					System.out.println("Robot : " + "I can only forecast weather information in a range of 7 days");
+					System.out.println("Robot : " + "Unfortunately your date is pass my range, try a closer date");
+					System.out.print("Human : ");
+					userInput = IOUtils.readInputTextLine();	
+					getDayDifference = NumberOfDays(userInput);
+					day = (int) getDayDifference; 
+				} while (day > 7 || day < 0);
+			}
 			location = findArrayLocation(input); 
-			addDateToArrayList(location, whatDate); 
+			addDateToArrayList(location, whatDate);  
 		} 
 		else 
 		{
@@ -370,6 +392,26 @@ public class ChatBot
 		}
 
 		return exitLoop(); 
+	}
+	
+	public static long NumberOfDays(String date) throws ParseException 
+	{
+		/*
+		 * takes user input dd-MM-yyyy as a string and converts it into a date
+		 * so it can be formatted to yyyy-MM-dd. Once converted we can use the 
+		 * java method to calculate the number of days between to given dates
+		 */
+		SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+		Date dateValue = formatter.parse(date);
+
+		SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+		String newDateString = output.format(dateValue);
+
+		LocalDate requestedDay = LocalDate.parse(newDateString);
+		LocalDate today = LocalDate.now(); 
+
+		long numberOfDays = ChronoUnit.DAYS.between(today, requestedDay);		
+		return numberOfDays;
 	}
 
 }
