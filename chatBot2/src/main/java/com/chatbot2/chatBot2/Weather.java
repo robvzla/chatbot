@@ -54,6 +54,10 @@ public class Weather
 		return result;
 	}
 	
+	/*
+	 * This method extracts the day the user needs from a forecasted list of temperatures
+	 * in a given location.
+	 */
 	public int RequestedTemperature(int day) 
 	{
 		ArrayList<String> forecastedTemperatures = ForecastTemperatures();
@@ -65,6 +69,10 @@ public class Weather
 		return roundTemperature;
 	}
 	
+	/*
+	 * This method gets and stores the temperature for eight consecutive days.
+	 * Stores each temperature value in an ArrayList
+	 */
 	public ArrayList<String> ForecastTemperatures() 
 	{
 		StringBuilder data = DataRequest();
