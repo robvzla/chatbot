@@ -12,7 +12,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 
 import org.alicebot.ab.Bot;
 import org.alicebot.ab.Chat;
@@ -31,8 +30,6 @@ public class ChatBot
 	private Bot bot;
 	private Chat chatSession;
 	String userInput;
-	private String location;
-	private String date;
 	private static final String greeting = "Hi, I heard you're going on holiday? Do you want some help planning your wardrobe?";
 	private ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>(); // use ArrayList to hold location and date information
 	final String DATE_FORMAT = "dd-MM-yyyy";
@@ -54,11 +51,6 @@ public class ChatBot
 	public String getGreeting() {
 		return this.greeting;
 	}
-	
-//	NOT USING HASHMAP SO COMMENTING THIS OUT
-//	public HashMap<String, String> getHolidays(){
-//		return this.holidays;
-//	}
 
 
 	// Methods
@@ -121,40 +113,6 @@ public class ChatBot
 		br.close();
 		return false;
 	}
-
-	/* 	NOT USING HASH MAP SO COMMENTING THIS OUT
-	//	Method gets the input holidays (location & date) from user and store it in a hashmap
-	public HashMap<String, String> extractInformation(String response, String request) 
-	{
-		//	Extracting user's location
-		if (response.contains("Noted, what date will you visit?")) 
-		{
-			location = request;
-			/*
-			 * 	Disabling the validation of user input for Milestone 1
-			 * 	Team is still deciding were to handle wrong/invalid data
-			 */
-			//			if (cityValidation(request)) 
-			//			{
-			//				location = request;
-			//			}
-			//			else 
-			//			{
-			//				request = "FALSE";
-			//				//	Update conversation
-			//				response = chatSession.multisentenceRespond(request);
-			//			}
-
-		//} /*
-		//	Extracting user's date
-		/*if (response.contains("Noted, is there any other place?")) 
-		{
-			date = request;
-			holidays.put(location, date);
-		}
-		return holidays;
-	}
-	*/
 
 
 	public String wildCharactersValidation(String response)
