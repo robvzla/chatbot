@@ -54,6 +54,17 @@ public class Weather
 		return result;
 	}
 	
+	public int RequestedTemperature(int day) 
+	{
+		ArrayList<String> forecastedTemperatures = ForecastTemperatures();
+		
+		//	Obtaining and parsing the String value temperature into a double data type
+		double temperature = Double.parseDouble(forecastedTemperatures.get(day));
+		int roundTemperature = (int) Math.round(temperature);
+		
+		return roundTemperature;
+	}
+	
 	public ArrayList<String> ForecastTemperatures() 
 	{
 		StringBuilder data = DataRequest();
