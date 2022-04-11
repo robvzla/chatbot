@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.chatbot1.chatBot1.Weather;
-
 
 public class WeatherTest 
 {
@@ -34,4 +32,15 @@ public class WeatherTest
 		assertEquals(expected, actual);
 	}
 
+	@Test
+	public void testRequestedTemperature() throws MalformedURLException
+	{
+		//	Dublin coordinates
+		Weather weather = new Weather("53.3498", "-6.2603");
+		int  currentDay = 0;
+		ArrayList<String> temperatures = weather.ForecastTemperatures();
+		int roundTemperature = (int) Math.round(Double.parseDouble(temperatures.get(0).toString()));
+		int expected = weather.RequestedTemperature(currentDay);
+		assertEquals(expected, roundTemperature);
+	}
 }
