@@ -551,7 +551,7 @@ public class ChatBotTest
 	 */
 
 	@Test
-	public void testExitLoopFalse(){
+	public void testExitLoopFalse() throws MalformedURLException, ParseException{
 		ChatBot bot = new ChatBot();
 		boolean isFalse = false; 
 		isFalse = bot.exitLoop(); // Type yes into console to test
@@ -563,7 +563,7 @@ public class ChatBotTest
 	 * Test by answering 'no'. Should return true
 	 */
 	@Test
-	public void testExitLoopTrue(){
+	public void testExitLoopTrue() throws MalformedURLException, ParseException{
 		ChatBot bot = new ChatBot();
 		boolean isTrue = false; 
 		isTrue = bot.exitLoop(); // Type no into console to test
