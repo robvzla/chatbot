@@ -20,7 +20,6 @@ import org.alicebot.ab.MagicBooleans;
 import org.alicebot.ab.MagicStrings;
 import org.alicebot.ab.utils.IOUtils;
 
-
 public class ChatBot 
 {
 	// Attributes
@@ -30,7 +29,7 @@ public class ChatBot
 	private Bot bot;
 	private Chat chatSession;
 	String userInput;
-	private static final String greeting = "Hi, I heard you're going on holiday? Do you want some help planning your wardrobe?";
+	private static final String greeting = "Robot : Hi, I heard you're going on holiday? Do you want some help planning your wardrobe?";
 	private ArrayList<ArrayList<String>> list = new ArrayList<ArrayList<String>>(); // use ArrayList to hold location and date information
 	final String DATE_FORMAT = "dd-MM-yyyy";
 
@@ -57,21 +56,22 @@ public class ChatBot
 	// Greeting method - to give the user the option to use the chat bot or not
 	public boolean greeting(){
 		System.out.println(greeting);
+		System.out.print("Human : "); 
 		userInput = IOUtils.readInputTextLine().trim();
 		if (userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("y")) {
-			System.out.println("That's great! Where would you like to go first?");
+			System.out.println("Robot : That's great! Where would you like to go first?");
 			return true;
 		} else if (userInput.equalsIgnoreCase("no") || userInput.equalsIgnoreCase("n")){
-			System.out.println("Hopefully I can help another time. Chat later!");
+			System.out.println("Robot : Hopefully I can help another time. Chat later!");
 			return false;
 		} else {
-			System.out.println("Are you sure you don't want help? If you do, please answer yes or y.");
+			System.out.println("Robot : Are you sure you don't want help? If you do, please answer yes or y.");
 			userInput = IOUtils.readInputTextLine().trim();
 			if (userInput.equalsIgnoreCase("yes") || userInput.equalsIgnoreCase("y")) {
-				System.out.println("That's great! Where would you like to go first?");
+				System.out.println("Robot : That's great! Where would you like to go first?");
 				return true;
 			}
-			System.out.println("Hopefully I can help another time. Chat later!");
+			System.out.println("Robot : Hopefully I can help another time. Chat later!");
 			return false;
 		}
 	}
@@ -175,13 +175,12 @@ public class ChatBot
 	// Hard Code to ask the user for a date
 	public String whatDate() {
 		String userInput = IOUtils.readInputTextLine(); 
+		userInput = returnValidDate(userInput); 
 		return userInput; 
 	}
 
 	// Date Validation
-	public boolean dateValidation(String date) {
-		date = date.replace('/', '-'); 
-		date = date.replace('.', '-'); 
+	public boolean dateValidation(String date) { 
 		try {
 			DateFormat df = new SimpleDateFormat(DATE_FORMAT);
 			df.setLenient(false);
@@ -190,9 +189,7 @@ public class ChatBot
 		} catch (ParseException e) {
 			return false;
 		}
-
 	}
-
 
 	// Convert the valid date to correct format
 	public String returnValidDate(String date) {
@@ -215,9 +212,11 @@ public class ChatBot
 	public boolean exitLoop() throws MalformedURLException, ParseException 
 	{
 		System.out.println("Robot : Would you like to go somewhere else?");
+		System.out.print("Human : ");
 		String userAnswer = IOUtils.readInputTextLine().trim(); 
 		while (!userAnswer.toLowerCase().equals("yes") && !userAnswer.toLowerCase().equals("no")) {
 			System.out.println("Robot : Sorry, I didn't get that. Could you answer yes or no please?");
+			System.out.print("Human : ");
 			userAnswer = IOUtils.readInputTextLine(); 
 		}
 
@@ -243,7 +242,7 @@ public class ChatBot
 				{
 					long getDayDifference = NumberOfDays(list.get(i).get(j));
 					int day = (int) getDayDifference; 
-			
+
 					Weather weather = new Weather(latitude, longitude);
 					int temperature = weather.RequestedTemperature(day);
 					System.out.println("Robot : " + "Temperature in " + list.get(i).get(0) + " for " + list.get(i).get(j) + " is " + temperature + " C");
@@ -317,18 +316,20 @@ public class ChatBot
 
 		// Method 2: Validate the return string from AskBot, 
 		// if it is a valid city (use the cityValidation method) add to the array
-		if(cityValidation(input)) {
-			// Check to see if the input value is already a value in the 2d array
-			// If it is - break the loop 
-			// If it isn't then create a new ArrayList within the original ArrayList
-			// Set the first value to input
-			addLocationToList(input); 
-		} else { // If the input isn't a valid city, loop until it is one
-			while(!cityValidation(input)) {
-				input = AskBot(); 
-			}
-			addLocationToList(input);
+
+		// Refactor the if else to just put in a while loop 
+		while(!cityValidation(input)) {
+			input = AskBot(); 
 		}
+
+		// Check to see if the input value is already a value in the 2d array
+		// If it is - break the loop 
+		// If it isn't then create a new ArrayList within the original ArrayList
+		// Set the first value to input
+		// Then add the city to the array
+		
+		addLocationToList(input);
+		
 
 		// Method 3: Hard code asking the user for a date, return it as a string
 		System.out.print("Human : ");
@@ -356,8 +357,9 @@ public class ChatBot
 					System.out.println("Robot : " + "I can only forecast weather information in a range of 7 days");
 					System.out.println("Robot : " + "Unfortunately your date is pass my range, try a closer date");
 					System.out.print("Human : ");
-					userInput = IOUtils.readInputTextLine();	
-					getDayDifference = NumberOfDays(userInput);
+					whatDate = whatDate(); 
+					//userInput = IOUtils.readInputTextLine();	
+					getDayDifference = NumberOfDays(whatDate);
 					day = (int) getDayDifference; 
 				} while (day > 7 || day < 0);
 			}
@@ -368,7 +370,8 @@ public class ChatBot
 		{
 			while(!dateValidation(whatDate)) 
 			{
-				System.out.println("Sorry, I didn't understand that. Please give me a date in the format DD-MM-YYYY!");
+				System.out.println("Robot : Sorry, I didn't understand that. Please give me a date in the format DD-MM-YYYY!");
+				System.out.print("Human : ");
 				whatDate = whatDate(); 
 			}
 			whatDate = returnValidDate(whatDate); 
@@ -378,7 +381,7 @@ public class ChatBot
 
 		return exitLoop(); 
 	}
-	
+
 	public static long NumberOfDays(String date) throws ParseException 
 	{
 		/*
@@ -398,7 +401,7 @@ public class ChatBot
 		long numberOfDays = ChronoUnit.DAYS.between(today, requestedDay);		
 		return numberOfDays;
 	}
-	
+
 	public String ClothesSuggestions(int temperature) 
 	{
 		if (temperature < 10) 
