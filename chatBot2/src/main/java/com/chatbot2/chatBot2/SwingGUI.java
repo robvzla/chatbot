@@ -64,8 +64,6 @@ public class SwingGUI implements ActionListener{
 	}
 
 
-
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource() == button) {			
@@ -82,4 +80,11 @@ public class SwingGUI implements ActionListener{
 			output.setText("You Added Input!");
 		} 
 	}
+	
+	// Testing
+	
+//	public static void main(String[] args) {
+//		
+//		new GUI(); 
+//	}
 }
