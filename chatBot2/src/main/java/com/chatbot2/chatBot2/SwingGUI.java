@@ -68,7 +68,18 @@ public class SwingGUI implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-
-	} 
+		if(e.getSource() == button) {			
+			// output.setText(bot.greeting());
+			//panel.remove(button);
+			//panel.add(btn2);
+		}
+		
+		if(e.getSource() == btn2) {
+			output.setText("You're chatting!"); 
+		}
+		
+		if(e.getSource() == userInput) {
+			output.setText("You Added Input!");
+		} 
+	}
 }
