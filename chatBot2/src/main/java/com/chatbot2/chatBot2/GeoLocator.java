@@ -72,6 +72,6 @@ public class GeoLocator
 	
 	public static void main(String[] args) throws MalformedURLException {
 		GeoLocator geoLocator = new GeoLocator("Dublin");
-		System.out.println(geoLocator.Coordinates());
+		System.out.println(geoLocator.Coordinates()); 
 	}
 }
