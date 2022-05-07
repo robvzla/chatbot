@@ -1,5 +1,8 @@
 package com.chatbot2.chatBot2;
 
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -21,6 +24,21 @@ public class SwingGUI implements ActionListener{
 	private JPanel panel; 
 	private JPanel p2;
 	
+	// Set up the constructor
+public SwingGUI() {
+		
+		// Set up the attributes
+		this.bot = new ChatBot(); 
+		frame = new JFrame(); 
+		panel = new JPanel(); 
+		p2 = new JPanel(); 
+		output = new JLabel(); 
+		userInput = new JTextField(); 
+		button = new JButton("Start Chatting!"); 
+		btn2 = new JButton("Send Message!"); 
+		
+	
+	}
 	
 	
 	
