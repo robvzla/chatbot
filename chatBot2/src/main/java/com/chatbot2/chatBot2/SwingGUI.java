@@ -85,6 +85,6 @@ public class SwingGUI implements ActionListener{
 	
 //	public static void main(String[] args) {
 //		
-//		new GUI(); 
+//		new SwingGUI(); 
 //	}
 }
