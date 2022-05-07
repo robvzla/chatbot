@@ -44,7 +44,23 @@ public class SwingGUI implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Chat Bot");
 		frame.add(p2); 
-		frame.add(panel, BorderLayout.SOUTH); 	
+		frame.add(panel, BorderLayout.SOUTH); 
+		
+		// Set up the panels
+		p2.setLayout(new GridLayout(2,0));
+
+		panel.setLayout(new FlowLayout(FlowLayout.RIGHT));
+		panel.add(button);
+
+		p2.add(output); 
+		p2.add(userInput); 
+		// Set as Hello world for testing
+		output.setText("Hello World"); 
+		userInput.setText("User Input: "); 
+
+		button.addActionListener(this);
+		btn2.addActionListener(this);
+		userInput.addActionListener(this);
 	}
 
 
