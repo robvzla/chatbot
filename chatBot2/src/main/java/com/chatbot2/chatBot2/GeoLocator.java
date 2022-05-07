@@ -54,8 +54,6 @@ public class GeoLocator
 		//	Extracting information
 		String result = data.toString();
 
-//		String result = resultSet;
-
 		ArrayList<String> coordinates = new ArrayList<>();
 		//	Eliminate unnecessary information from the URL request
 		String cleanBody[] = result.split("},\"lat\":");
@@ -68,10 +66,5 @@ public class GeoLocator
 		coordinates.add(coords[0]);
 		coordinates.add(coords[1]);
 		return coordinates;
-	}
-	
-	public static void main(String[] args) throws MalformedURLException {
-		GeoLocator geoLocator = new GeoLocator("Dublin");
-		System.out.println(geoLocator.Coordinates()); 
 	}
 }
