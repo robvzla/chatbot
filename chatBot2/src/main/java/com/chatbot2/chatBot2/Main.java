@@ -16,9 +16,11 @@ public class Main{
 		// Create the bot
 		ChatBot bot = new ChatBot(); 
 
-		// Run the greeting method
+		//	Adding back the while loop as it was causing issues with user input
 		if(bot.greeting()) {
-			bot.runBot();
+			do {
+				bot.runBot();
+			} while (!bot.runBot()); 
 		}
 	}
 }
