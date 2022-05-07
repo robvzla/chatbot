@@ -23,10 +23,10 @@ public class SwingGUI implements ActionListener{
 	private JFrame frame; 
 	private JPanel panel; 
 	private JPanel p2;
-	
+
 	// Set up the constructor
-public SwingGUI() {
-		
+	public SwingGUI() {
+
 		// Set up the attributes
 		this.bot = new ChatBot(); 
 		frame = new JFrame(); 
@@ -36,16 +36,23 @@ public SwingGUI() {
 		userInput = new JTextField(); 
 		button = new JButton("Start Chatting!"); 
 		btn2 = new JButton("Send Message!"); 
-		
-	
+
+		// Set up the Frame
+		frame.setLayout(new BorderLayout());
+		frame.setSize(1000, 600); 
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setTitle("Chat Bot");
+		frame.add(p2); 
+		frame.add(panel, BorderLayout.SOUTH); 	
 	}
-	
-	
-	
-	
+
+
+
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+
 	} 
 }
