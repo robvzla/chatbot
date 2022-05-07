@@ -52,9 +52,7 @@ public class GeoLocator
 		StringBuilder data = DataRequest();
 
 		//	Extracting information
-		String resultSet = data.toString();
-
-		String result = resultSet;
+		String result = data.toString();
 
 		ArrayList<String> coordinates = new ArrayList<>();
 		//	Eliminate unnecessary information from the URL request

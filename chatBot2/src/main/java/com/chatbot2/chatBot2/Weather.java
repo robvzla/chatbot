@@ -37,7 +37,6 @@ public class Weather
 		try 
 		{
 			result = new StringBuilder();
-			//			URL url = new URL(urlString);
 			URLConnection connection = url.openConnection();
 			BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
 			String line;
